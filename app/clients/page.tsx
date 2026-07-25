@@ -5,7 +5,7 @@ import Breadcrumbs from "../_components/Breadcrumbs";
 
 const TITLE = "Clients";
 const DESCRIPTION =
-  "Who Nuj Studios is built for — Singapore SMEs across F&B, professional services, retail, healthcare, trades and education.";
+  "Who Nuj Studios is built for: Singapore SMEs across F&B, professional services, retail, healthcare, trades and education.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -57,7 +57,7 @@ export default function ClientsPage() {
       <PageHero
         eyebrow="WHO WE'RE BUILT FOR"
         title="Singapore SMEs who want to own their systems, not rent them."
-        intro="We work best with founder-led and small teams who want one accountable partner across web, content, SEO and automation — not a rotating cast of subcontractors."
+        intro="We work best with founder-led and small teams who want one accountable partner across web, content, SEO and automation, not a rotating cast of subcontractors."
       />
 
       <section>
@@ -84,7 +84,7 @@ export default function ClientsPage() {
           </span>
           <h2>Coming soon.</h2>
           <p>
-            We&apos;re a young studio — client logos and testimonials will go here as engagements
+            We&apos;re a young studio. Client logos and testimonials will go here as engagements
             complete. Ask us directly for references in the meantime.
           </p>
         </div>
@@ -100,7 +100,7 @@ export default function ClientsPage() {
       <section className="cta-band">
         <div className="reveal">
           <h2>Think you&apos;d be a good fit?</h2>
-          <p>Tell us about your business — we&apos;ll tell you honestly if we&apos;re the right partner.</p>
+          <p>Tell us about your business, and we&apos;ll tell you honestly if we&apos;re the right partner.</p>
           <Link className="btn btn-dark" href="/contact">
             Book a call →
           </Link>

@@ -27,7 +27,7 @@ export default function CaseStudiesPage() {
       <PageHero
         eyebrow="PROOF OF WORK"
         title="How we approach real SME briefs."
-        intro="These are illustrative sample projects, not completed client engagements — a preview of how we'd approach briefs like these. Ask us for references on a call."
+        intro="These are illustrative sample projects, not completed client engagements: a preview of how we'd approach briefs like these. Ask us for references on a call."
       />
       <section>
         <div className="card-grid reveal">

@@ -71,6 +71,7 @@ export default async function BlogPostPage({
       <Breadcrumbs
         items={[
           { label: "Home", href: "/" },
+          { label: "Resources", href: "/resources" },
           { label: "Blog", href: "/blog" },
           { label: post.title },
         ]}

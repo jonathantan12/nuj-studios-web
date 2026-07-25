@@ -6,7 +6,7 @@ import { getSortedBlogPosts } from "@/lib/blog-posts";
 
 const TITLE = "Blog";
 const DESCRIPTION =
-  "Practical guidance on web development, SEO, AI search and running a lean digital operation — from the team at Nuj Studios.";
+  "Practical guidance on web development, SEO, AI search and running a lean digital operation, from the team at Nuj Studios.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -25,7 +25,13 @@ export default function BlogIndexPage() {
 
   return (
     <main>
-      <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Blog" }]} />
+      <Breadcrumbs
+        items={[
+          { label: "Home", href: "/" },
+          { label: "Resources", href: "/resources" },
+          { label: "Blog" },
+        ]}
+      />
       <PageHero
         eyebrow="INSIGHTS"
         title="Ideas for running a sharper digital operation."

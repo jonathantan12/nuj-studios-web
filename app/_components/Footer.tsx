@@ -35,6 +35,17 @@ export default function Footer() {
         </div>
 
         <div className="footer-col">
+          <span className="footer-col-title mono">Resources</span>
+          <ul>
+            {FOOTER_LINKS.resources.map((link) => (
+              <li key={link.href}>
+                <Link href={link.href}>{link.label}</Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        <div className="footer-col">
           <span className="footer-col-title mono">Get in touch</span>
           <ul>
             <li>

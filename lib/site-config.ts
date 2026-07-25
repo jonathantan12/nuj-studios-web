@@ -6,11 +6,26 @@ export const SITE_DESCRIPTION =
 export const CONTACT_EMAIL = "hello@nujstudios.com";
 
 export const NAV_LINKS = [
-  { href: "/services", label: "Services" },
-  { href: "/case-studies", label: "Case Studies" },
-  { href: "/blog", label: "Blog" },
   { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
+];
+
+export const RESOURCE_LINKS = [
+  {
+    href: "/blog",
+    label: "Blog",
+    short: "Practical guidance on web development, SEO, AI search and running a lean digital operation.",
+  },
+  {
+    href: "/faq",
+    label: "FAQ",
+    short: "Answers to the questions we get asked most before a project starts.",
+  },
+  {
+    href: "/glossary",
+    label: "Glossary",
+    short: "Plain-English definitions for the SEO and AI search terms we use.",
+  },
 ];
 
 export const FOOTER_LINKS = {
@@ -18,7 +33,6 @@ export const FOOTER_LINKS = {
     { href: "/about", label: "About" },
     { href: "/case-studies", label: "Case Studies" },
     { href: "/clients", label: "Clients" },
-    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ],
   services: [
@@ -26,5 +40,11 @@ export const FOOTER_LINKS = {
     { href: "/services/content-marketing", label: "Content Marketing" },
     { href: "/services/seo", label: "SEO Optimization" },
     { href: "/services/ai-automation", label: "AI Workflow Automation" },
+  ],
+  resources: [
+    { href: "/resources", label: "Resources" },
+    { href: "/blog", label: "Blog" },
+    { href: "/faq", label: "FAQ" },
+    { href: "/glossary", label: "Glossary" },
   ],
 };

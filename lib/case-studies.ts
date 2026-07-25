@@ -13,7 +13,7 @@ export type CaseStudy = {
 
 /**
  * Illustrative sample projects describing how Nuj Studios approaches common
- * SME briefs. These are not completed client engagements — replace with real,
+ * SME briefs. These are not completed client engagements, replace with real,
  * named case studies as they become available.
  */
 export const CASE_STUDIES: CaseStudy[] = [
@@ -45,7 +45,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     summary:
       "A technical SEO audit, on-page overhaul and ongoing content system for a firm with strong offline reputation but almost no organic search presence.",
     challenge:
-      "A professional services firm had built a strong reputation through referrals over a decade, but their website was effectively invisible in search — slow, thin on content, and missing the technical foundations search engines need to index and trust a site.",
+      "A professional services firm had built a strong reputation through referrals over a decade, but their website was effectively invisible in search: slow, thin on content, and missing the technical foundations search engines need to index and trust a site.",
     approach: [
       "Ran a full technical SEO audit covering crawlability, indexation, and site speed",
       "Rebuilt on-page foundations: title tags, meta descriptions, heading structure, internal linking",
@@ -65,11 +65,11 @@ export const CASE_STUDIES: CaseStudy[] = [
     summary:
       "An AI-assisted lead-qualification agent wired directly into the existing CRM, cutting out hours of manual enquiry sorting each week.",
     challenge:
-      "A retail SME's sales team was manually reading and triaging every website enquiry before deciding who to follow up with — a repetitive, rule-based task eating hours each week that could otherwise go toward actually closing deals.",
+      "A retail SME's sales team was manually reading and triaging every website enquiry before deciding who to follow up with, a repetitive, rule-based task eating hours each week that could otherwise go toward actually closing deals.",
     approach: [
       "Mapped the existing enquiry-to-follow-up workflow to find where the manual bottleneck actually was",
       "Built an AI agent to read incoming enquiries, apply the team's existing qualification criteria, and tag leads accordingly",
-      "Wired the agent directly into their existing CRM — no platform migration required",
+      "Wired the agent directly into their existing CRM, with no platform migration required",
       "Documented the workflow so the team could adjust qualification rules themselves",
       "Set up monitoring so misclassified leads could be caught and corrected quickly",
     ],

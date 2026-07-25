@@ -100,7 +100,7 @@ export default async function ServiceDetailPage({
       <section className="cta-band">
         <div className="reveal">
           <h2>Ready to talk about {service.name.toLowerCase()}?</h2>
-          <p>Tell us what you&apos;re working with — we&apos;ll scope it on the first call.</p>
+          <p>Tell us what you&apos;re working with, and we&apos;ll scope it on the first call.</p>
           <a className="btn btn-dark" href="mailto:hello@nujstudios.com">
             Book a call →
           </a>

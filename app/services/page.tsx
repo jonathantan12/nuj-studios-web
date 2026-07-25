@@ -6,7 +6,7 @@ import { SERVICES } from "@/lib/services";
 
 const TITLE = "Services";
 const DESCRIPTION =
-  "Web development, content marketing, SEO and AI workflow automation — four disciplines, one accountable team, for Singapore SMEs.";
+  "Web development, content marketing, SEO and AI workflow automation: four disciplines, one accountable team, for Singapore SMEs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ export default function ServicesPage() {
       <PageHero
         eyebrow="WHAT WE DO"
         title="Four disciplines. One accountable team."
-        intro="Most agencies hand you between specialists and subcontractors. We keep web development, content, SEO and automation under one in-house team — so nothing gets lost in translation."
+        intro="Most agencies hand you between specialists and subcontractors. We keep web development, content, SEO and automation under one in-house team, so nothing gets lost in translation."
       />
       <section>
         <div className="card-grid reveal">

@@ -5,7 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/site-config";
 
 const TITLE = "Contact";
 const DESCRIPTION =
-  "Get in touch with Nuj Studios — a boutique digital team based in Singapore, working with SMEs on web, content, SEO and automation.";
+  "Get in touch with Nuj Studios, a boutique digital team based in Singapore, working with SMEs on web, content, SEO and automation.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -26,7 +26,7 @@ export default function ContactPage() {
       <PageHero
         eyebrow="GET IN TOUCH"
         title="Let's talk about what you're building."
-        intro="Singapore-based, working with SMEs across the island. Tell us what you're working with and we'll scope it honestly — even if that means telling you what you don't need."
+        intro="Singapore-based, working with SMEs across the island. Tell us what you're working with and we'll scope it honestly, even if that means telling you what you don't need."
       >
         <div className="hero-ctas">
           <a className="btn btn-dark" href={`mailto:${CONTACT_EMAIL}`}>
@@ -42,7 +42,7 @@ export default function ContactPage() {
             <p>
               <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
-            <p>The fastest way to reach us directly — no contact form queue.</p>
+            <p>The fastest way to reach us directly, no contact form queue.</p>
           </div>
           <div className="card">
             <h3>Location</h3>
@@ -52,7 +52,7 @@ export default function ContactPage() {
           <div className="card">
             <h3>Response time</h3>
             <p>Within one business day</p>
-            <p>We reply personally — you won&apos;t hear from a bot or a ticket system.</p>
+            <p>We reply personally. You won&apos;t hear from a bot or a ticket system.</p>
           </div>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function ContactPage() {
             <span className="mono step">02</span>
             <div>
               <h3>We scope it honestly</h3>
-              <p>A clear, specific proposal — not a generic package, and not upsold beyond what you actually need.</p>
+              <p>A clear, specific proposal, not a generic package, and not upsold beyond what you actually need.</p>
             </div>
           </li>
           <li>

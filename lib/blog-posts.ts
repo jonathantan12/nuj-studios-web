@@ -26,7 +26,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "5 Signs Your SME Website Is Costing You Customers",
     metaTitle: "5 Signs Your SME Website Is Losing Sales",
     description:
-      "Most small business websites don't fail loudly — they just quietly lose inquiries. Here's what to check before you assume your site is fine.",
+      "Most small business websites don't fail loudly. They just quietly lose inquiries. Here's what to check before you assume your site is fine.",
     date: "2026-06-02",
     readTime: "6 min read",
     category: "Web Development",
@@ -35,17 +35,17 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "Most small business websites were built once, launched, and never revisited. That's not automatically a problem — but it means the cost of an underperforming site is usually invisible. Nobody files a complaint when a visitor leaves without calling. They just leave. Here are five signs worth checking for.",
+        text: "Most small business websites were built once, launched, and never revisited. That's not automatically a problem, but it means the cost of an underperforming site is usually invisible. Nobody files a complaint when a visitor leaves without calling. They just leave. Here are five signs worth checking for.",
       },
       { type: "h2", text: "1. It takes more than a couple of seconds to feel responsive" },
       {
         type: "p",
-        text: "Speed is a trust signal before it's a technical metric. A slow first paint tells a visitor the business behind the site might be slow to respond too. If you're on a shared hosting plan running a page builder with a dozen plugins, that's usually where the drag comes from — not your internet connection.",
+        text: "Speed is a trust signal before it's a technical metric. A slow first paint tells a visitor the business behind the site might be slow to respond too. If you're on a shared hosting plan running a page builder with a dozen plugins, that's usually where the drag comes from, not your internet connection.",
       },
       { type: "h2", text: "2. Your contact info requires more than one tap to find" },
       {
         type: "p",
-        text: "On mobile especially, if a visitor has to hunt through a menu to find a phone number or WhatsApp link, most won't bother. Contact details — call, message, email — should be reachable from any page in one or two taps, not buried at the bottom of a 'Contact Us' page nobody clicked into.",
+        text: "On mobile especially, if a visitor has to hunt through a menu to find a phone number or WhatsApp link, most won't bother. Contact details, like call, message, or email, should be reachable from any page in one or two taps, not buried at the bottom of a 'Contact Us' page nobody clicked into.",
       },
       { type: "h2", text: "3. There's no clear next step above the fold" },
       {
@@ -55,7 +55,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "4. It looks the same today as it did three years ago" },
       {
         type: "p",
-        text: "Design trends move, but more importantly, your business has probably changed — new services, new positioning, new proof points. A site that hasn't been touched since launch usually isn't just visually dated, it's also not saying what's actually true about the business anymore.",
+        text: "Design trends move, but more importantly, your business has probably changed: new services, new positioning, new proof points. A site that hasn't been touched since launch usually isn't just visually dated, it's also not saying what's actually true about the business anymore.",
       },
       { type: "h2", text: "5. Nobody on your team can update it without calling a developer" },
       {
@@ -66,16 +66,16 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Load your homepage on mobile data, not office wifi — does it feel instant or sluggish?",
+          "Load your homepage on mobile data, not office wifi. Does it feel instant or sluggish?",
           "Time how long it takes to find your phone number or booking link from the homepage.",
           "Ask someone outside the business what you do, based only on the homepage.",
-          "Check the copyright year in the footer — is it still accurate?",
+          "Check the copyright year in the footer. Is it still accurate?",
           "Confirm someone on your team actually has login access and knows how to use it.",
         ],
       },
       {
         type: "p",
-        text: "None of this requires a full rebuild to fix — but it does require someone to actually look. That's the audit we run at the start of every engagement, before we touch a single line of code.",
+        text: "None of this requires a full rebuild to fix, but it does require someone to actually look. That's the audit we run at the start of every engagement, before we touch a single line of code.",
       },
     ],
   },
@@ -84,7 +84,7 @@ export const BLOG_POSTS: BlogPost[] = [
     title: "SEO vs AI Search: What Singapore SMEs Need to Know in 2026",
     metaTitle: "SEO vs AI Search for Singapore SMEs (2026)",
     description:
-      "Google isn't the only place customers look anymore. Here's how ranking for AI answer engines differs from traditional SEO — and why you need both.",
+      "Google isn't the only place customers look anymore. Here's how ranking for AI answer engines differs from traditional SEO, and why you need both.",
     date: "2026-06-18",
     readTime: "8 min read",
     category: "SEO",
@@ -93,7 +93,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "For twenty years, 'SEO' meant one thing: rank in the ten blue links on Google. That's no longer the whole picture. A growing share of research and purchase-decision queries now get answered directly by AI systems — Google's AI Overviews, ChatGPT, Perplexity, and similar tools — often without the user ever clicking through to a website.",
+        text: "For twenty years, 'SEO' meant one thing: rank in the ten blue links on Google. That's no longer the whole picture. A growing share of research and purchase-decision queries now get answered directly by AI systems, such as Google's AI Overviews, ChatGPT, and Perplexity, often without the user ever clicking through to a website.",
       },
       {
         type: "p",
@@ -108,11 +108,11 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "ul",
         items: [
-          "Structured data (schema.org markup) that explicitly tells crawlers what an entity is — an Organization, a Service, an Article, a FAQ — rather than making them infer it from prose.",
+          "Structured data (schema.org markup) that explicitly tells crawlers what an entity is, such as an Organization, a Service, an Article, or a FAQ, rather than making them infer it from prose.",
           "Answer-first writing: state the direct answer to a likely question in the first sentence or two of a section, then explain. AI systems extract the answer, not the build-up.",
           "Genuinely crawlable HTML. If your key content only renders after heavy client-side JavaScript, some AI crawlers may never see it. Server-rendered content is safer.",
           "A robots.txt that explicitly allows the AI crawlers you want indexing you (GPTBot, ClaudeBot, PerplexityBot, Google-Extended) rather than silently blocking them by default.",
-          "Consistent facts about your business across your site, directories, and social profiles — AI systems cross-reference for confidence before citing a source.",
+          "Consistent facts about your business across your site, directories, and social profiles. AI systems cross-reference for confidence before citing a source.",
         ],
       },
       { type: "h2", text: "What still matters exactly as much as before" },
@@ -123,11 +123,11 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "The practical takeaway for SMEs" },
       {
         type: "p",
-        text: "You don't need a separate 'AI SEO' strategy bolted onto your existing site. You need the same fundamentals — done properly — plus structured data and answer-first content that make it easy for both a search engine and a language model to understand exactly what your business does and why it's a credible source.",
+        text: "You don't need a separate 'AI SEO' strategy bolted onto your existing site. You need the same fundamentals, done properly, plus structured data and answer-first content that make it easy for both a search engine and a language model to understand exactly what your business does and why it's a credible source.",
       },
       {
         type: "quote",
-        text: "If a machine can't parse what you do in the first two sentences, neither can a distracted human — fix it for one, and you've usually fixed it for both.",
+        text: "If a machine can't parse what you do in the first two sentences, neither can a distracted human. Fix it for one, and you've usually fixed it for both.",
       },
     ],
   },
@@ -145,7 +145,7 @@ export const BLOG_POSTS: BlogPost[] = [
     content: [
       {
         type: "p",
-        text: "The traditional digital agency retainer looks something like this: a 12-month contract, a scope document nobody reads again after signing, and a project that gets handed between three different specialists — a designer, a developer, a copywriter — none of whom talk to each other directly.",
+        text: "The traditional digital agency retainer looks something like this: a 12-month contract, a scope document nobody reads again after signing, and a project that gets handed between three different specialists (a designer, a developer, a copywriter), none of whom talk to each other directly.",
       },
       {
         type: "p",
@@ -164,7 +164,7 @@ export const BLOG_POSTS: BlogPost[] = [
       { type: "h2", text: "What a managed, month-to-month model changes" },
       {
         type: "p",
-        text: "A month-to-month engagement with a small, accountable team flips the incentive. The team has to keep earning the work every month, which means the work has to keep being useful — not just billable.",
+        text: "A month-to-month engagement with a small, accountable team flips the incentive. The team has to keep earning the work every month, which means the work has to keep being useful, not just billable.",
       },
       {
         type: "p",
@@ -174,7 +174,7 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "ol",
         items: [
-          "Who is actually doing the work — is it in-house, or subcontracted out after the sale?",
+          "Who is actually doing the work? Is it in-house, or subcontracted out after the sale?",
           "What happens if you want to pause or leave after month two?",
           "Can you talk directly to the person building your site, not just an account manager?",
           "What does 'done' look like for this month, specifically?",
@@ -182,7 +182,7 @@ export const BLOG_POSTS: BlogPost[] = [
       },
       {
         type: "p",
-        text: "None of this means every retainer is bad or every month-to-month engagement is good — the structure matters less than the accountability behind it. But if you can't answer those four questions about your current setup, it's worth finding out why.",
+        text: "None of this means every retainer is bad or every month-to-month engagement is good. The structure matters less than the accountability behind it. But if you can't answer those four questions about your current setup, it's worth finding out why.",
       },
     ],
   },

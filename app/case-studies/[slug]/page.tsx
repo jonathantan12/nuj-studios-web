@@ -70,7 +70,7 @@ export default async function CaseStudyDetailPage({
       />
       <PageHero eyebrow={study.industry} title={study.title} intro={study.summary}>
         <p className="notice mono">
-          Illustrative sample project — this shows how we&apos;d approach a brief like this, not a
+          Illustrative sample project: this shows how we&apos;d approach a brief like this, not a
           completed client engagement.
         </p>
       </PageHero>
@@ -134,7 +134,7 @@ export default async function CaseStudyDetailPage({
       <section className="cta-band">
         <div className="reveal">
           <h2>Have a similar project in mind?</h2>
-          <p>Tell us what you&apos;re working with — we&apos;ll scope it on the first call.</p>
+          <p>Tell us what you&apos;re working with, and we&apos;ll scope it on the first call.</p>
           <a className="btn btn-dark" href="mailto:hello@nujstudios.com">
             Book a call →
           </a>

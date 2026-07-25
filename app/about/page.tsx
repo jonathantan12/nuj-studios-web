@@ -5,7 +5,7 @@ import Breadcrumbs from "../_components/Breadcrumbs";
 
 const TITLE = "About";
 const DESCRIPTION =
-  "Nuj Studios is a boutique, in-house team building web, content, SEO and automation systems for Singapore SMEs — no subcontractors, no handoffs.";
+  "Nuj Studios is a boutique, in-house team building web, content, SEO and automation systems for Singapore SMEs, with no subcontractors and no handoffs.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -28,7 +28,7 @@ const PRINCIPLES = [
   {
     title: "Own what you pay for",
     description:
-      "Your code, your content, your systems — built so they're genuinely yours, not locked to a platform or a vendor relationship you can't leave.",
+      "Your code, your content, your systems: built so they're genuinely yours, not locked to a platform or a vendor relationship you can't leave.",
   },
   {
     title: "Built to be maintained by you",
@@ -57,14 +57,14 @@ export default function AboutPage() {
           <h2>Why we exist</h2>
           <p>
             A website, a content calendar, search visibility, and internal automations are usually
-            treated as four separate purchases from four separate vendors — a web developer, a
+            treated as four separate purchases from four separate vendors: a web developer, a
             content freelancer, an SEO consultant, and, increasingly, someone bolting on AI tools
             nobody fully understands.
           </p>
           <p>
             That fragmentation is where most SME digital budgets quietly leak. Nuj Studios keeps all
             four disciplines under one small, in-house team that treats them as one connected
-            system — because a website that ranks but doesn&apos;t convert, or content that
+            system, because a website that ranks but doesn&apos;t convert, or content that
             publishes but isn&apos;t found, both fail for the same reason: nobody owned the whole
             picture.
           </p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
           </span>
           <h2>Small on purpose.</h2>
           <p>
-            We&apos;re a young, hands-on studio — full team bios are coming soon as we grow. In the
+            We&apos;re a young, hands-on studio, and full team bios are coming soon as we grow. In the
             meantime, every engagement starts with a direct call with the people who&apos;ll
             actually do the work, not a salesperson.
           </p>
