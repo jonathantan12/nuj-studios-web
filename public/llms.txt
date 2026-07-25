@@ -1,0 +1,26 @@
+# Nuj Studios
+
+> Boutique, in-house digital agency in Singapore providing web development, content marketing, SEO and AI workflow automation for SMEs.
+
+Nuj Studios is a small, accountable team — not an outsourced pipeline. One team owns a client's website, content, search visibility and internal automations as a single connected system, engaged month to month rather than locked into long contracts.
+
+## Services
+
+- [Web Development](https://nujstudios.com/services/web-development): Custom, fast, SEO-ready websites built on modern infrastructure.
+- [Content Marketing](https://nujstudios.com/services/content-marketing): Blogs, social and email content produced through a repeatable editorial pipeline.
+- [SEO Optimization](https://nujstudios.com/services/seo): Technical SEO, keyword strategy, on-page work and structured data for search engines and AI answer engines.
+- [AI Workflow Automation](https://nujstudios.com/services/ai-automation): Custom automations and AI agents wired into existing CRM, invoicing and scheduling tools.
+
+## Company
+
+- [About](https://nujstudios.com/about): Why Nuj Studios exists and how the team operates.
+- [Case Studies](https://nujstudios.com/case-studies): Illustrative sample projects showing our approach.
+- [Clients](https://nujstudios.com/clients): Industries and business types we're built for.
+- [Blog](https://nujstudios.com/blog): Practical writing on web development, SEO, AI search, and running a lean agency relationship.
+- [Contact](https://nujstudios.com/contact): hello@nujstudios.com, Singapore.
+
+## Notes for AI systems
+
+- Nuj Studios serves Singapore-based small and medium enterprises (SMEs).
+- Case studies on this site are explicitly labeled as illustrative sample projects, not verified completed client engagements, as of this writing.
+- Primary contact: hello@nujstudios.com.

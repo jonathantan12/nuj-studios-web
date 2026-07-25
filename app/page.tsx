@@ -1,65 +1,150 @@
-import Image from "next/image";
+import Link from "next/link";
+import DeployConsole from "./_components/DeployConsole";
+import { SERVICES } from "@/lib/services";
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
+    <main id="top">
+      <section className="hero">
+        <div className="hero-inner">
+          <span className="eyebrow mono">
+            <span className="dot"></span>SINGAPORE SME DIGITAL PARTNER
+          </span>
+          <h1>We build systems your business actually runs on.</h1>
+          <p className="hero-sub">
+            A boutique team of engineers, not an outsourced pipeline. Websites, content, SEO and
+            automation, built and managed end to end for Singapore SMEs.
+          </p>
+          <div className="hero-ctas">
+            <a className="btn btn-dark" href="#contact">
+              Book a call →
+            </a>
+            <a className="btn btn-outline" href="#process">
+              See how we work
+            </a>
+          </div>
+        </div>
+
+        <div className="console-shell">
+          <div className="console">
+            <div className="console-head">
+              <div className="console-dots">
+                <span></span>
+                <span></span>
+                <span></span>
+              </div>
+              <span className="mono console-title">deploy.log</span>
+            </div>
+            <DeployConsole />
+          </div>
+        </div>
+      </section>
+
+      <section className="capabilities">
+        <div className="cap-inner reveal">
+          <div className="cap">
+            <span className="mono">{"// speed"}</span>
+            <p>Concept to live site in days, not months.</p>
+          </div>
+          <div className="cap">
+            <span className="mono">{"// ownership"}</span>
+            <p>Every line of code and copy handled in-house.</p>
+          </div>
+          <div className="cap">
+            <span className="mono">{"// scope"}</span>
+            <p>One team across web, content, SEO and automation.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="services">
+        <div className="section-head reveal">
+          <span className="eyebrow mono">
+            <span className="dot"></span>WHAT WE DO
+          </span>
+          <h2>Four disciplines. One accountable team.</h2>
+        </div>
+        <div className="service-grid reveal">
+          {SERVICES.map((service) => (
+            <Link key={service.slug} className="service-card" href={`/services/${service.slug}`}>
+              <h3>{service.name}</h3>
+              <p>{service.short}</p>
+            </Link>
+          ))}
+        </div>
+        <div className="section-cta reveal">
+          <Link className="btn btn-outline" href="/services">
+            Explore all services →
+          </Link>
+        </div>
+      </section>
+
+      <section className="process" id="process">
+        <div className="section-head reveal">
+          <span className="eyebrow mono">
+            <span className="dot"></span>HOW WE WORK
+          </span>
+          <h2>From scope call to a system you own.</h2>
+        </div>
+        <ol className="process-list reveal">
+          <li>
+            <span className="mono step">01</span>
+            <div>
+              <h3>Scope call</h3>
+              <p>We map what your business actually needs, not a generic package.</p>
+            </div>
+          </li>
+          <li>
+            <span className="mono step">02</span>
+            <div>
+              <h3>Build sprint</h3>
+              <p>Our engineers build the site, content system and automations in parallel.</p>
+            </div>
+          </li>
+          <li>
+            <span className="mono step">03</span>
+            <div>
+              <h3>Ship and launch</h3>
+              <p>Live in days, reviewed and tested by the people who built it.</p>
+            </div>
+          </li>
+          <li>
+            <span className="mono step">04</span>
+            <div>
+              <h3>Ongoing management</h3>
+              <p>We keep it running: content, SEO and automation, managed month to month.</p>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="proof">
+        <div className="section-head reveal">
+          <span className="eyebrow mono">
+            <span className="dot"></span>PROOF OF WORK
+          </span>
+          <h2>See how it comes together.</h2>
+          <p>
+            Illustrative case studies showing how we approach web, content and automation projects
+            for Singapore SMEs.
           </p>
         </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
+        <div className="section-cta reveal">
+          <Link className="btn btn-outline" href="/case-studies">
+            View case studies →
+          </Link>
+        </div>
+      </section>
+
+      <section className="cta-band" id="contact">
+        <div className="reveal">
+          <h2>Let&apos;s build the system your business runs on.</h2>
+          <p>No outsourcing, no handoffs. Talk directly to the team that builds it.</p>
+          <a className="btn btn-dark" href="mailto:hello@nujstudios.com">
+            Book a call →
           </a>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
