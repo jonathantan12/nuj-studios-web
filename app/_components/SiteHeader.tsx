@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
-import { NAV_LINKS, RESOURCE_LINKS } from "@/lib/site-config";
+import { NAV_LINKS, RESOURCE_LINKS, WHATSAPP_URL } from "@/lib/site-config";
 import { SERVICES } from "@/lib/services";
 import { CASE_STUDIES } from "@/lib/case-studies";
 import NavDropdown from "./NavDropdown";
@@ -110,7 +110,12 @@ export default function SiteHeader() {
         </nav>
 
         <div className="nav-actions">
-          <a className="btn btn-dark nav-cta" href="mailto:hello@nujstudios.com">
+          <a
+            className="btn btn-dark nav-cta"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Book a call
           </a>
           <button
@@ -177,7 +182,9 @@ export default function SiteHeader() {
           </nav>
           <a
             className="btn btn-dark nav-mobile-cta"
-            href="mailto:hello@nujstudios.com"
+            href={WHATSAPP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
             onClick={() => setOpen(false)}
           >
             Book a call →

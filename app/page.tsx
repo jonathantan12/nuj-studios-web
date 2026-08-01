@@ -1,6 +1,7 @@
 import Link from "next/link";
 import DeployConsole from "./_components/DeployConsole";
 import { SERVICES } from "@/lib/services";
+import { WHATSAPP_URL } from "@/lib/site-config";
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
             handled by one accountable team.
           </p>
           <div className="hero-ctas">
-            <a className="btn btn-dark" href="#contact">
+            <a className="btn btn-dark" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
               Book a call →
             </a>
             <a className="btn btn-outline" href="#process">
@@ -177,7 +178,7 @@ export default function Home() {
         <div className="reveal">
           <h2>Let&apos;s build the system your business runs on.</h2>
           <p>No outsourcing, no handoffs. Talk directly to the team that builds it.</p>
-          <a className="btn btn-dark" href="mailto:hello@nujstudios.com">
+          <a className="btn btn-dark" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Book a call →
           </a>
         </div>

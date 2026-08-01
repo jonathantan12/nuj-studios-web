@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import PageHero from "../_components/PageHero";
 import Breadcrumbs from "../_components/Breadcrumbs";
+import { HOW_WE_OPERATE } from "@/lib/company";
 
 const TITLE = "About";
 const DESCRIPTION =
@@ -18,39 +19,6 @@ export const metadata: Metadata = {
     type: "website",
   },
 };
-
-const PRINCIPLES = [
-  {
-    title: "One team, start to finish",
-    description:
-      "The person who builds your site is the same person improving your SEO and wiring your automations. No handoffs between departments or subcontractors.",
-  },
-  {
-    title: "Own what you pay for",
-    description:
-      "Your code, your content, your systems: built so they're genuinely yours, not locked to a platform or a vendor relationship you can't leave.",
-  },
-  {
-    title: "Built to be maintained by you",
-    description:
-      "Every system we hand over is designed so your own team can actually operate it, not just admire it from a distance.",
-  },
-  {
-    title: "Accountable month to month",
-    description:
-      "We charge a simple monthly fee for maintenance and service, collected month to month, with no lock-in period. You only keep paying if you're happy with the work.",
-  },
-  {
-    title: "We only sell what you need",
-    description:
-      "If a small fix solves your problem, we won't pitch you a full rebuild. We'd rather earn your trust than pad an invoice.",
-  },
-  {
-    title: "Plain language, always",
-    description:
-      "You'll get updates and explanations in plain English, not technical jargon dressed up to sound impressive.",
-  },
-];
 
 export default function AboutPage() {
   return (
@@ -95,7 +63,7 @@ export default function AboutPage() {
           <h2>What that looks like in practice</h2>
         </div>
         <div className="card-grid reveal">
-          {PRINCIPLES.map((principle) => (
+          {HOW_WE_OPERATE.map((principle) => (
             <div key={principle.title} className="card">
               <h3>{principle.title}</h3>
               <p>{principle.description}</p>

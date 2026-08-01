@@ -5,7 +5,7 @@ import Breadcrumbs from "../../_components/Breadcrumbs";
 import PageHero from "../../_components/PageHero";
 import { CASE_STUDIES, getAllCaseStudySlugs, getCaseStudy } from "@/lib/case-studies";
 import { getService } from "@/lib/services";
-import { SITE_URL } from "@/lib/site-config";
+import { SITE_URL, WHATSAPP_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
   return getAllCaseStudySlugs().map((slug) => ({ slug }));
@@ -135,7 +135,7 @@ export default async function CaseStudyDetailPage({
         <div className="reveal">
           <h2>Have a similar project in mind?</h2>
           <p>Tell us what you&apos;re working with, and we&apos;ll scope it on the first call.</p>
-          <a className="btn btn-dark" href="mailto:hello@nujstudios.com">
+          <a className="btn btn-dark" href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
             Book a call →
           </a>
         </div>

@@ -4,7 +4,8 @@ import "./globals.css";
 import SiteHeader from "./_components/SiteHeader";
 import Footer from "./_components/Footer";
 import ScrollReveal from "./_components/ScrollReveal";
-import { SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
+import WhatsAppButton from "./_components/WhatsAppButton";
+import { CONTACT_EMAIL, SITE_DESCRIPTION, SITE_NAME, SITE_TAGLINE, SITE_URL } from "@/lib/site-config";
 
 const spaceGrotesk = Space_Grotesk({
   variable: "--font-space-grotesk",
@@ -77,7 +78,7 @@ const organizationJsonLd = {
   name: SITE_NAME,
   url: SITE_URL,
   description: SITE_DESCRIPTION,
-  email: "hello@nujstudios.com",
+  email: CONTACT_EMAIL,
   address: {
     "@type": "PostalAddress",
     addressCountry: "SG",
@@ -121,6 +122,8 @@ export default function RootLayout({
         {children}
 
         <Footer />
+
+        <WhatsAppButton variant="float" />
 
         <ScrollReveal />
 

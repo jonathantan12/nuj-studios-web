@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../_components/Breadcrumbs";
 import ArticleBody from "../../_components/ArticleBody";
+import CopyMarkdownButton from "../../_components/CopyMarkdownButton";
 import { getAllBlogSlugs, getBlogPost } from "@/lib/blog-posts";
+import { blogPostToMarkdown } from "@/lib/blog-markdown";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -88,6 +90,7 @@ export default async function BlogPostPage({
             <p className="page-hero-meta mono">
               {formattedDate} · {post.readTime}
             </p>
+            <CopyMarkdownButton markdown={blogPostToMarkdown(post)} />
           </div>
         </header>
         <section>

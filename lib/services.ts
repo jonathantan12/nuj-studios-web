@@ -5,6 +5,22 @@ export type Service = {
   summary: string;
   deliverables: string[];
   faqs: { question: string; answer: string }[];
+  pricing?: {
+    setupFee: { amount: number; display: string };
+    monthly: { amount: number; display: string };
+    monthlyIncludes: string[];
+    notes: string[];
+  };
+  /** SEO-optimized overrides. Falls back to `name` / `summary` if omitted. */
+  metaTitle?: string;
+  metaDescription?: string;
+  /** Persuasive, keyword-rich context shown between the hero and deliverables. */
+  context?: {
+    heading: string;
+    body: string[];
+    linkHref?: string;
+    linkLabel?: string;
+  };
 };
 
 export const SERVICES: Service[] = [
@@ -51,10 +67,24 @@ export const SERVICES: Service[] = [
     short: "SEO-ready website development, built and shipped from concept to live in days.",
     summary:
       "Fast, accessible, conversion-focused websites built on modern infrastructure. Designed, coded and shipped by the same in-house team that maintains them.",
+    metaTitle: "Website Development Singapore for SMEs",
+    metaDescription:
+      "Website development for Singapore SMEs from S$800, plus S$50/month hosting and maintenance. Fast, SEO-ready sites built and managed in-house, no lock-in.",
+    context: {
+      heading: "Why website development matters for a Singapore SME",
+      body: [
+        "Most SMEs lose customers to their website, not their product. A slow homepage, a site that's hard to read on a phone, or a design that hasn't changed in five years all quietly push visitors to a competitor before they see what you actually offer.",
+        "Google notices the same problems. Search engines rank fast, mobile-friendly, well-structured sites higher, so a website built on shaky foundations makes every other marketing dollar you spend work harder than it needs to.",
+        "A website built right does the opposite: it loads fast, ranks on Google, and gives every visitor a clear reason to get in touch.",
+      ],
+      linkHref: "/blog/signs-your-sme-website-is-costing-you-customers",
+      linkLabel: "See the 5 most common ways an SME website quietly costs its business customers",
+    },
     deliverables: [
-      "Custom-designed, responsive site built on modern web infrastructure, not a page builder template",
+      "Custom-designed, responsive site built on WordPress or custom code, whichever is right for your business",
       "Core Web Vitals-optimized performance out of the box",
       "On-page SEO foundations: clean URLs, semantic HTML, structured data",
+      "Google Analytics and Google Search Console set up and connected from day one",
       "A content system your own team can actually update",
       "Launch support and post-launch fixes included in the handover",
     ],
@@ -65,16 +95,44 @@ export const SERVICES: Service[] = [
           "Most SME sites go from kickoff to live in days to a few weeks, depending on scope, not months. We scope this precisely on the first call.",
       },
       {
-        question: "Do you build on website builders like Wix or WordPress?",
+        question: "Do you build on WordPress or custom code?",
         answer:
-          "No. We build on modern web infrastructure for speed, security and control, and still hand you a site your team can edit without touching code.",
+          "Either, depending on what's best for your business. Tell us your preference and we'll build on that. Otherwise we'll recommend WordPress or custom code based on what your business actually needs, not a one-size-fits-all default. We don't build on drag-and-drop site builders like Wix, since they limit speed and control long term.",
       },
       {
         question: "What happens after launch?",
         answer:
           "The same team that built your site keeps it updated month to month. Content changes, performance, and fixes are part of the ongoing engagement, not a separate support ticket queue.",
       },
+      {
+        question: "Can you set up analytics and tracking?",
+        answer:
+          "Google Analytics and Google Search Console are set up as part of every build. If you also want a heatmap or user session tracking, we can add that on as well.",
+      },
+      {
+        question: "Do I need to sign a long-term contract?",
+        answer:
+          "No. It's a one-time S$800 setup fee, then S$50 a month with no lock-in. Cancel any time, and we'll help transfer your domain and website back to you.",
+      },
+      {
+        question: "I already have a website or developer. Can you take over?",
+        answer:
+          "Yes. We'll review what you have and tell you honestly whether it makes more sense to take over hosting and maintenance as-is, or rebuild it properly. Either way, that's a decision we make with you on the first call, not before.",
+      },
     ],
+    pricing: {
+      setupFee: { amount: 800, display: "S$800" },
+      monthly: { amount: 50, display: "S$50/month" },
+      monthlyIncludes: [
+        "Hosting",
+        "Your .com domain name, registered and renewed for you",
+        "Web maintenance, so everything keeps running smoothly",
+      ],
+      notes: [
+        "Need something extra, like a heatmap or user tracking? Add-on services are priced separately.",
+        "No lock-in. Cancel any time if you're not happy, and we'll help transfer your domain and website back to you.",
+      ],
+    },
   },
   {
     slug: "content-marketing",

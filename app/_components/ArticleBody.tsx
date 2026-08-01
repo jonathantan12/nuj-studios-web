@@ -28,7 +28,20 @@ export default function ArticleBody({ blocks }: { blocks: BlogBlock[] }) {
               </ol>
             );
           case "quote":
-            return <blockquote key={i}>{block.text}</blockquote>;
+            return (
+              <blockquote key={i}>
+                <p>{block.text}</p>
+                {block.source && <cite>{block.source}</cite>}
+              </blockquote>
+            );
+          case "link":
+            return (
+              <p key={i}>
+                <a href={block.href} target="_blank" rel="noopener noreferrer">
+                  {block.text} ↗
+                </a>
+              </p>
+            );
           default:
             return null;
         }

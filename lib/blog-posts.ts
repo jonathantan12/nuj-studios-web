@@ -4,7 +4,8 @@ export type BlogBlock =
   | { type: "h3"; text: string }
   | { type: "ul"; items: string[] }
   | { type: "ol"; items: string[] }
-  | { type: "quote"; text: string };
+  | { type: "quote"; text: string; source?: string }
+  | { type: "link"; text: string; href: string };
 
 export type BlogPost = {
   slug: string;
@@ -183,6 +184,75 @@ export const BLOG_POSTS: BlogPost[] = [
       {
         type: "p",
         text: "None of this means every retainer is bad or every month-to-month engagement is good. The structure matters less than the accountability behind it. But if you can't answer those four questions about your current setup, it's worth finding out why.",
+      },
+    ],
+  },
+  {
+    slug: "why-most-ai-agents-break-in-production",
+    title: "Why Most AI Agents Break the Moment You Actually Rely on Them",
+    metaTitle: "Why Most AI Agents Break When You Rely on Them",
+    description:
+      "A slick AI demo and an AI system your business can actually depend on are two very different things. Here's the gap most vendors don't mention.",
+    date: "2026-08-01",
+    readTime: "7 min read",
+    category: "AI Automation",
+    tags: ["AI Agents", "AI Automation", "AI Solutions"],
+    author: "nuj studios team",
+    content: [
+      {
+        type: "p",
+        text: "A lot of businesses see an AI demo, get impressed, and assume it's ready to run part of their operations. In practice, there's a big gap between an AI that can hold a conversation and an AI system you can actually trust to handle real work, unattended, every single day. We recently watched a LangChain engineering talk that lays this gap out clearly, and it's worth translating into plain terms for anyone thinking about bringing AI into their business.",
+      },
+      { type: "h2", text: "An AI agent usually means less than you'd think" },
+      {
+        type: "p",
+        text: "Most people picture an AI agent as a chatbot that can also take actions: send an email, update a spreadsheet, look something up. That's true, but it's only the visible part. The AI model itself, the part that actually \"thinks,\" is really only half the story. Everything built around that model, the rules, the memory, the error handling, the guardrails, is what decides whether the agent is actually dependable or just impressive in a demo.",
+      },
+      {
+        type: "p",
+        text: "The talk put it simply:",
+      },
+      {
+        type: "quote",
+        text: "If you're not the model, you're the harness.",
+        source: "LangChain, \"Building Deep Agents and Deploying in Production\"",
+      },
+      {
+        type: "p",
+        text: "That surrounding system is called a \"harness,\" and it's a bigger deal than the name suggests. As one example from the talk: the tooling behind Claude Code, a well-known AI coding tool, runs to roughly 500,000 lines of code. Almost none of that is the AI model itself. It's all the scaffolding that makes the model reliable enough to actually use.",
+      },
+      { type: "h2", text: "The real risk: an agent that works in testing but fails on real work" },
+      {
+        type: "p",
+        text: "Here's the scenario that matters for a business. Say you have an AI agent working through a genuinely multi-step task: following up with a batch of leads, processing a stack of invoices, or qualifying enquiries as they come in. That's not one action, it's dozens of small steps in sequence.",
+      },
+      {
+        type: "p",
+        text: "Now say something goes wrong on step 40 of 60. A cheaply built agent has no memory of what it already did. It either stops entirely, or worse, starts over from step one, potentially double-emailing leads or re-processing invoices it already handled. A properly built agent picks up exactly where it left off. That difference sounds small until it's your customer data or your invoicing on the line.",
+      },
+      { type: "h2", text: "What to actually check before you trust an AI agent with real work" },
+      {
+        type: "p",
+        text: "Based on what the talk covers, here's a plain-language checklist worth applying to any AI agent, whether you're building one or being sold one:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Can it recover from a failure partway through, without restarting the whole task or repeating actions it already took?",
+          "Does it have clear limits on what it's allowed to do on your behalf? An agent sending one email for you is fine. An agent that could silently send a thousand without anyone noticing is a different problem entirely.",
+          "Does it keep a human in the loop for anything that actually matters, rather than running quietly in the background and telling you after the fact?",
+          "Does it remember relevant context over time, like your preferences or past conversations, instead of starting from zero every session?",
+        ],
+      },
+      { type: "h2", text: "Why this matters if you're considering AI for your business" },
+      {
+        type: "p",
+        text: "None of this means AI agents aren't ready for SMEs. The opposite, actually: the underlying technology has gotten reliable enough that, built properly, an AI agent can genuinely take repetitive work off your team's plate. But \"built properly\" is doing a lot of work in that sentence. If someone pitches you an AI agent for your business, the four questions above are a reasonable way to tell a serious build from a demo that hasn't been stress-tested yet.",
+      },
+      {
+        type: "link",
+        text: "Watch the full talk: \"Building Deep Agents and Deploying in Production\" (LangChain)",
+        href: "https://www.youtube.com/watch?v=IZabCqyBJLg",
       },
     ],
   },

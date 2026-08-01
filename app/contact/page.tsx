@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import PageHero from "../_components/PageHero";
 import Breadcrumbs from "../_components/Breadcrumbs";
-import { CONTACT_EMAIL } from "@/lib/site-config";
+import WhatsAppButton from "../_components/WhatsAppButton";
+import { CONTACT_EMAIL, WHATSAPP_URL } from "@/lib/site-config";
 
 const TITLE = "Contact";
 const DESCRIPTION =
@@ -32,6 +33,7 @@ export default function ContactPage() {
           <a className="btn btn-dark" href={`mailto:${CONTACT_EMAIL}`}>
             Email {CONTACT_EMAIL} →
           </a>
+          <WhatsAppButton />
         </div>
       </PageHero>
 
@@ -43,6 +45,15 @@ export default function ContactPage() {
               <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
             </p>
             <p>The fastest way to reach us directly, no contact form queue.</p>
+          </div>
+          <div className="card">
+            <h3>WhatsApp</h3>
+            <p>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
+                +65 9655 2844
+              </a>
+            </p>
+            <p>Message Vivian directly for a quick reply, no need to wait for email.</p>
           </div>
           <div className="card">
             <h3>Location</h3>
