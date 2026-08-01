@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/resources" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/resources",
     type: "website",

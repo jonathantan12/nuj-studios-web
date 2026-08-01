@@ -9,9 +9,46 @@ export type Service = {
 
 export const SERVICES: Service[] = [
   {
+    slug: "ai-automation",
+    name: "AI Solutions & Automation",
+    short:
+      "Custom AI solutions: agents for CRM, invoicing, scheduling and lead generation, wired into how your business already runs.",
+    summary:
+      "Custom AI solutions, from working out where AI actually fits your business to building and wiring the automation in. Agents for your CRM, invoicing, scheduling and lead-gen tools, so your team spends less time on repetitive operational work.",
+    deliverables: [
+      "A working session to find where AI genuinely helps your business, not where it's just trendy",
+      "Custom AI solutions and automations wired into the CRM, invoicing or scheduling tools you already use",
+      "AI agents for lead qualification, FAQ handling, or internal operations",
+      "Documentation your team can maintain without an engineer on staff",
+      "Ongoing monitoring and adjustment as your workflows change",
+    ],
+    faqs: [
+      {
+        question: "We don't know where to start with AI. Can you help?",
+        answer:
+          "Yes, that's exactly what we help with. We look at how your business actually runs and tell you honestly where AI will save time or money, and where it won't.",
+      },
+      {
+        question: "Do we need to replace our existing tools?",
+        answer:
+          "Usually not. Custom AI solutions are wired into what you already use, like your CRM, invoicing, or scheduling, rather than requiring a platform migration.",
+      },
+      {
+        question: "Is this only for teams with in-house engineers?",
+        answer:
+          "No, it's built for teams without one. The goal is less manual work for your team, not another tool your team has to learn to maintain.",
+      },
+      {
+        question: "What's a typical first automation to start with?",
+        answer:
+          "Often lead intake and qualification, or invoicing reminders: repetitive, rule-based tasks with an immediate, measurable time saving.",
+      },
+    ],
+  },
+  {
     slug: "web-development",
     name: "Web Development",
-    short: "SEO-ready websites, built and shipped from concept to live in days.",
+    short: "SEO-ready website development, built and shipped from concept to live in days.",
     summary:
       "Fast, accessible, conversion-focused websites built on modern infrastructure. Designed, coded and shipped by the same in-house team that maintains them.",
     deliverables: [
@@ -41,11 +78,11 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "content-marketing",
-    name: "Content Marketing",
+    name: "Content Marketing & Management",
     short:
-      "Blogs, social media and email newsletters, produced through automated content pipelines your team doesn't have to run.",
+      "Content management for blogs, social media and email newsletters, produced through automated content pipelines your team doesn't have to run.",
     summary:
-      "Editorial systems that keep your brand publishing consistently: blog posts, social content and newsletters produced through a repeatable pipeline, not one-off freelance briefs.",
+      "Content management and editorial systems that keep your brand publishing consistently: blog posts, social content and newsletters produced through a repeatable pipeline, not one-off freelance briefs.",
     deliverables: [
       "An editorial calendar aligned to your services and target audience",
       "Blog posts written and published on a consistent, agreed cadence",
@@ -73,11 +110,11 @@ export const SERVICES: Service[] = [
   },
   {
     slug: "seo",
-    name: "SEO Optimization",
+    name: "Google SEO Optimization",
     short:
-      "Technical audits, keyword strategy and on-page work that gets your site found, not just built.",
+      "Technical audits, keyword strategy and on-page work that gets your site found on Google, not just built.",
     summary:
-      "Technical SEO, keyword strategy, on-page optimization and structured data, built for both traditional search engines and AI answer engines.",
+      "Technical SEO, keyword strategy, on-page optimization and structured data, built for Google search and AI answer engines alike.",
     deliverables: [
       "A technical SEO audit covering crawlability, site speed and indexation issues",
       "Keyword strategy mapped to real buyer intent, not just search volume",
@@ -94,44 +131,12 @@ export const SERVICES: Service[] = [
       {
         question: "Do you optimize for AI search tools, not just Google?",
         answer:
-          "Yes. That means structured data and answer-first content structure designed to help AI answer engines understand and cite your site, alongside traditional ranking work.",
+          "Yes. That means structured data and answer-first content structure designed to help AI answer engines understand and cite your site, alongside traditional Google ranking work.",
       },
       {
         question: "Do you also write the content, or just optimize what exists?",
         answer:
-          "Both. SEO and content marketing are usually bundled, since the two feed each other directly.",
-      },
-    ],
-  },
-  {
-    slug: "ai-automation",
-    name: "AI Workflow Automation",
-    short:
-      "Custom agents for CRM, invoicing, scheduling and lead generation, wired into how your business already runs.",
-    summary:
-      "Custom automations and AI agents wired into your CRM, invoicing, scheduling and lead-gen tools, so your team spends less time on repetitive operational work.",
-    deliverables: [
-      "A process audit to find where manual work is actually repeatable",
-      "Custom automations wired into the CRM, invoicing or scheduling tools you already use",
-      "AI agents for lead qualification, FAQ handling, or internal operations",
-      "Documentation your team can maintain without an engineer on staff",
-      "Ongoing monitoring and adjustment as your workflows change",
-    ],
-    faqs: [
-      {
-        question: "Do we need to replace our existing tools?",
-        answer:
-          "Usually not. Automations are wired into what you already use, like CRM, invoicing, or scheduling, rather than requiring a platform migration.",
-      },
-      {
-        question: "Is this only for teams with in-house engineers?",
-        answer:
-          "No, it's built for teams without one. The goal is less manual work for your team, not another tool your team has to learn to maintain.",
-      },
-      {
-        question: "What's a typical first automation to start with?",
-        answer:
-          "Often lead intake and qualification, or invoicing reminders: repetitive, rule-based tasks with an immediate, measurable time saving.",
+          "Both. Google SEO and content management are usually bundled, since the two feed each other directly.",
       },
     ],
   },

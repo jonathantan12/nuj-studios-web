@@ -6,14 +6,14 @@ import { CASE_STUDIES } from "@/lib/case-studies";
 
 const TITLE = "Case Studies";
 const DESCRIPTION =
-  "Illustrative sample projects showing how Nuj Studios approaches web development, SEO and AI automation briefs for Singapore SMEs.";
+  "Illustrative sample projects showing how nuj studios approaches web development, SEO and AI automation briefs for Singapore SMEs.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/case-studies" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/case-studies",
     type: "website",

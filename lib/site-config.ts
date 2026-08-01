@@ -1,8 +1,8 @@
 export const SITE_URL = "https://nujstudios.com";
-export const SITE_NAME = "Nuj Studios";
-export const SITE_TAGLINE = "Digital systems for Singapore SMEs";
+export const SITE_NAME = "nuj studios";
+export const SITE_TAGLINE = "AI & Digital Solutions for Singapore SMEs";
 export const SITE_DESCRIPTION =
-  "A boutique team of engineers, not an outsourced pipeline. Websites, content, SEO and automation, built and managed end to end for Singapore SMEs.";
+  "Custom AI solutions, website development, content management, Google SEO and digital solutions consulting, all handled by one in-house Singapore team.";
 export const CONTACT_EMAIL = "hello@nujstudios.com";
 
 export const NAV_LINKS = [
@@ -36,10 +36,10 @@ export const FOOTER_LINKS = {
     { href: "/contact", label: "Contact" },
   ],
   services: [
+    { href: "/services/ai-automation", label: "AI Solutions & Automation" },
     { href: "/services/web-development", label: "Web Development" },
-    { href: "/services/content-marketing", label: "Content Marketing" },
-    { href: "/services/seo", label: "SEO Optimization" },
-    { href: "/services/ai-automation", label: "AI Workflow Automation" },
+    { href: "/services/content-marketing", label: "Content Management" },
+    { href: "/services/seo", label: "Google SEO" },
   ],
   resources: [
     { href: "/resources", label: "Resources" },

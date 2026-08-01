@@ -56,7 +56,7 @@ export default async function BlogPostPage({
     description: post.description,
     datePublished: post.date,
     author: { "@type": "Organization", name: post.author },
-    publisher: { "@type": "Organization", name: "Nuj Studios" },
+    publisher: { "@type": "Organization", name: "nuj studios" },
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   };
 

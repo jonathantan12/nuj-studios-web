@@ -73,7 +73,7 @@ export default function SiteHeader() {
     <header className="nav">
       <div className="nav-inner">
         <Link className="logo" href="/">
-          <span className="logo-mark">{"{ }"}</span>Nuj Studios
+          <span className="logo-mark">{"{ }"}</span>nuj studios
         </Link>
 
         <nav className="nav-links" ref={navLinksRef}>

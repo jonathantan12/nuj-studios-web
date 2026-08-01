@@ -31,7 +31,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "6 min read",
     category: "Web Development",
     tags: ["Web Design", "Conversion", "SME"],
-    author: "Nuj Studios Team",
+    author: "nuj studios team",
     content: [
       {
         type: "p",
@@ -89,7 +89,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "8 min read",
     category: "SEO",
     tags: ["SEO", "AI Search", "Structured Data"],
-    author: "Nuj Studios Team",
+    author: "nuj studios team",
     content: [
       {
         type: "p",
@@ -141,7 +141,7 @@ export const BLOG_POSTS: BlogPost[] = [
     readTime: "5 min read",
     category: "Working With an Agency",
     tags: ["Agency Model", "SME Strategy"],
-    author: "Nuj Studios Team",
+    author: "nuj studios team",
     content: [
       {
         type: "p",

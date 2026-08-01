@@ -25,7 +25,7 @@ export async function generateMetadata({
     description: service.summary,
     alternates: { canonical: `/services/${service.slug}` },
     openGraph: {
-      title: `${service.name} | Nuj Studios`,
+      title: `${service.name} | nuj studios`,
       description: service.summary,
       url: `/services/${service.slug}`,
       type: "website",
@@ -48,7 +48,7 @@ export default async function ServiceDetailPage({
     "@context": "https://schema.org",
     "@type": "Service",
     serviceType: service.name,
-    provider: { "@type": "Organization", name: "Nuj Studios", url: SITE_URL },
+    provider: { "@type": "Organization", name: "nuj studios", url: SITE_URL },
     areaServed: "SG",
     description: service.summary,
     url: `${SITE_URL}/services/${service.slug}`,

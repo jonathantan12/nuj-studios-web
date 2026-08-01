@@ -5,14 +5,14 @@ import { CONTACT_EMAIL } from "@/lib/site-config";
 
 const TITLE = "Contact";
 const DESCRIPTION =
-  "Get in touch with Nuj Studios, a boutique digital team based in Singapore, working with SMEs on web, content, SEO and automation.";
+  "Get in touch with nuj studios, a boutique digital team based in Singapore, working with SMEs on web, content, SEO and automation.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/contact" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/contact",
     type: "website",

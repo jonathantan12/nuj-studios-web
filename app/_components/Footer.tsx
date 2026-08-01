@@ -7,7 +7,7 @@ export default function Footer() {
       <div className="wrap footer-grid">
         <div className="footer-brand">
           <Link className="logo" href="/">
-            <span className="logo-mark">{"{ }"}</span>Nuj Studios
+            <span className="logo-mark">{"{ }"}</span>nuj studios
           </Link>
           <p className="mono footer-note">Singapore · Boutique digital agency for SMEs</p>
         </div>
@@ -57,7 +57,7 @@ export default function Footer() {
 
       <div className="wrap footer-bottom">
         <p className="mono footer-note">
-          © {new Date().getFullYear()} Nuj Studios. All rights reserved.
+          © {new Date().getFullYear()} nuj studios. All rights reserved.
         </p>
       </div>
     </footer>

@@ -6,14 +6,14 @@ import { getSortedBlogPosts } from "@/lib/blog-posts";
 
 const TITLE = "Blog";
 const DESCRIPTION =
-  "Practical guidance on web development, SEO, AI search and running a lean digital operation, from the team at Nuj Studios.";
+  "Practical guidance on web development, SEO, AI search and running a lean digital operation, from the team at nuj studios.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/blog" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/blog",
     type: "website",

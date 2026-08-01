@@ -5,14 +5,14 @@ import Breadcrumbs from "../_components/Breadcrumbs";
 
 const TITLE = "About";
 const DESCRIPTION =
-  "Nuj Studios is a boutique, in-house team building web, content, SEO and automation systems for Singapore SMEs, with no subcontractors and no handoffs.";
+  "nuj studios is a boutique, in-house team building web, content, SEO and automation systems for Singapore SMEs, with no subcontractors and no handoffs.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/about" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/about",
     type: "website",
@@ -38,7 +38,17 @@ const PRINCIPLES = [
   {
     title: "Accountable month to month",
     description:
-      "No 12-month lock-in. We keep earning the work every month, which means the work has to stay useful, not just billable.",
+      "We charge a simple monthly fee for maintenance and service, collected month to month, with no lock-in period. You only keep paying if you're happy with the work.",
+  },
+  {
+    title: "We only sell what you need",
+    description:
+      "If a small fix solves your problem, we won't pitch you a full rebuild. We'd rather earn your trust than pad an invoice.",
+  },
+  {
+    title: "Plain language, always",
+    description:
+      "You'll get updates and explanations in plain English, not technical jargon dressed up to sound impressive.",
   },
 ];
 
@@ -49,7 +59,7 @@ export default function AboutPage() {
       <PageHero
         eyebrow="ABOUT NUJ STUDIOS"
         title="A boutique team, not an outsourced pipeline."
-        intro="Most SMEs end up choosing between an expensive full-service agency that routes their project through account managers, or a string of freelancers with nobody accountable for the whole picture. We built a third option."
+        intro="Most SMEs end up choosing between an expensive full-service agency that routes their project through account managers, or a string of freelancers with nobody accountable for the whole picture. We built a third option, and we've been doing it for Singapore SMEs since 2023."
       />
 
       <section>
@@ -62,11 +72,17 @@ export default function AboutPage() {
             nobody fully understands.
           </p>
           <p>
-            That fragmentation is where most SME digital budgets quietly leak. Nuj Studios keeps all
+            That fragmentation is where most SME digital budgets quietly leak. nuj studios keeps all
             four disciplines under one small, in-house team that treats them as one connected
             system, because a website that ranks but doesn&apos;t convert, or content that
             publishes but isn&apos;t found, both fail for the same reason: nobody owned the whole
             picture.
+          </p>
+          <p>
+            We started nuj studios because we wanted to change how digital solutions are sold to
+            SMEs. Good work shouldn&apos;t come with a high agency price tag. We keep our costs low
+            and pass that saving on to you, while still delivering work built to an enterprise
+            standard.
           </p>
         </div>
       </section>
@@ -95,9 +111,11 @@ export default function AboutPage() {
           </span>
           <h2>Small on purpose.</h2>
           <p>
-            We&apos;re a young, hands-on studio, and full team bios are coming soon as we grow. In the
-            meantime, every engagement starts with a direct call with the people who&apos;ll
-            actually do the work, not a salesperson.
+            We&apos;re a young, hands-on studio, and full team bios are coming soon as we grow. Every
+            project is handled by a team of professionals with backgrounds in software
+            engineering, cloud solutions and artificial intelligence, working fully in-house with
+            zero outsourcing. Every engagement starts with a direct call with the people
+            who&apos;ll actually do the work, not a salesperson.
           </p>
         </div>
         <div className="card-grid reveal">

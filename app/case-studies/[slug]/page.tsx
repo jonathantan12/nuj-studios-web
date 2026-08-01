@@ -27,7 +27,7 @@ export async function generateMetadata({
     description: study.summary,
     alternates: { canonical: `/case-studies/${study.slug}` },
     openGraph: {
-      title: `${title} | Nuj Studios`,
+      title: `${title} | nuj studios`,
       description: study.summary,
       url: `/case-studies/${study.slug}`,
       type: "article",
@@ -55,7 +55,7 @@ export default async function CaseStudyDetailPage({
     headline: study.title,
     description: study.summary,
     about: study.industry,
-    publisher: { "@type": "Organization", name: "Nuj Studios" },
+    publisher: { "@type": "Organization", name: "nuj studios" },
     mainEntityOfPage: `${SITE_URL}/case-studies/${study.slug}`,
   };
 

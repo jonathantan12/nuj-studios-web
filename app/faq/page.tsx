@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/faq" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/faq",
     type: "website",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 const FAQS = [
   {
-    question: "How is Nuj Studios different from a typical agency?",
+    question: "How is nuj studios different from a typical agency?",
     answer:
       "One small, in-house team owns your website, content, SEO and automation as a single connected system. No subcontractors, no account managers relaying your feedback, and no handoffs between departments.",
   },

@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   description: DESCRIPTION,
   alternates: { canonical: "/glossary" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/glossary",
     type: "website",
@@ -25,7 +25,7 @@ export default function GlossaryPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "DefinedTermSet",
-    name: "Nuj Studios AI SEO and Web Glossary",
+    name: "nuj studios AI SEO and Web Glossary",
     description: DESCRIPTION,
     url: `${SITE_URL}/glossary`,
     hasDefinedTerm: GLOSSARY_TERMS.map((item) => ({

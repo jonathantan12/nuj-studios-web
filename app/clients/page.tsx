@@ -5,14 +5,14 @@ import Breadcrumbs from "../_components/Breadcrumbs";
 
 const TITLE = "Clients";
 const DESCRIPTION =
-  "Who Nuj Studios is built for: Singapore SMEs across F&B, professional services, retail, healthcare, trades and education.";
+  "Who nuj studios is built for: Singapore SMEs across F&B, professional services, retail, healthcare, trades and education.";
 
 export const metadata: Metadata = {
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/clients" },
   openGraph: {
-    title: `${TITLE} | Nuj Studios`,
+    title: `${TITLE} | nuj studios`,
     description: DESCRIPTION,
     url: "/clients",
     type: "website",

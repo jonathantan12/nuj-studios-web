@@ -32,11 +32,15 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    "AI solutions Singapore",
+    "custom AI solutions Singapore",
+    "digital solutions consulting Singapore",
     "Singapore web design agency",
     "Singapore SME digital agency",
-    "SEO Singapore",
+    "Google SEO Singapore",
     "AI workflow automation Singapore",
     "website development Singapore",
+    "content management Singapore",
   ],
   authors: [{ name: SITE_NAME }],
   creator: SITE_NAME,
@@ -79,6 +83,15 @@ const organizationJsonLd = {
     addressCountry: "SG",
   },
   areaServed: "SG",
+  knowsAbout: [
+    "AI solutions",
+    "Custom AI solutions",
+    "AI automation",
+    "Website development",
+    "Content management",
+    "Google SEO",
+    "Digital solutions consulting",
+  ],
   sameAs: [],
 };
 

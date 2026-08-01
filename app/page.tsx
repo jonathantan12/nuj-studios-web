@@ -8,12 +8,13 @@ export default function Home() {
       <section className="hero">
         <div className="hero-inner">
           <span className="eyebrow mono">
-            <span className="dot"></span>SINGAPORE SME DIGITAL PARTNER
+            <span className="dot"></span>AI SOLUTIONS FOR SINGAPORE SMES
           </span>
-          <h1>We build systems your business actually runs on.</h1>
+          <h1>AI-powered systems your business actually runs on.</h1>
           <p className="hero-sub">
-            A boutique team of engineers, not an outsourced pipeline. Websites, content, SEO and
-            automation, built and managed end to end for Singapore SMEs.
+            A boutique, in-house team in Singapore since 2023. Custom AI solutions, website
+            development, content management, Google SEO and digital solutions consulting, all
+            handled by one accountable team.
           </p>
           <div className="hero-ctas">
             <a className="btn btn-dark" href="#contact">
@@ -43,17 +44,53 @@ export default function Home() {
       <section className="capabilities">
         <div className="cap-inner reveal">
           <div className="cap">
-            <span className="mono">{"// speed"}</span>
-            <p>Concept to live site in days, not months.</p>
+            <span className="mono">{"// ai first"}</span>
+            <p>We find where AI genuinely helps your business, before we build anything.</p>
           </div>
           <div className="cap">
             <span className="mono">{"// ownership"}</span>
-            <p>Every line of code and copy handled in-house.</p>
+            <p>Every system, AI workflow and line of code handled in-house.</p>
           </div>
           <div className="cap">
             <span className="mono">{"// scope"}</span>
-            <p>One team across web, content, SEO and automation.</p>
+            <p>AI, web, content, SEO and automation, under one team.</p>
           </div>
+        </div>
+      </section>
+
+      <section id="why-us">
+        <div className="section-head reveal">
+          <span className="eyebrow mono">
+            <span className="dot"></span>WHO WE ARE
+          </span>
+          <h2>One in-house team. Six ways we help you grow.</h2>
+        </div>
+        <div className="prose reveal">
+          <p>
+            Most SMEs are priced out of proper AI and digital work, or sold tools nobody on their
+            team understands. nuj studios has been the in-house alternative for Singapore SMEs
+            since 2023: one small team with backgrounds in software engineering, cloud solutions
+            and artificial intelligence, working directly with you from strategy to
+            implementation.
+          </p>
+          <ul>
+            <li>
+              <strong>Custom AI solutions.</strong> We find where AI genuinely helps your
+              business, then build and wire it in.
+            </li>
+            <li>
+              <strong>Website development, content management and Google SEO.</strong> Built and
+              managed by the same team, not handed off between vendors.
+            </li>
+            <li>
+              <strong>Digital solutions consulting.</strong> Honest advice on what your business
+              actually needs, not the biggest package we can sell.
+            </li>
+            <li>
+              <strong>No lock-in.</strong> Simple monthly fees, and you only keep paying if
+              you&apos;re happy with the work.
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -62,7 +99,7 @@ export default function Home() {
           <span className="eyebrow mono">
             <span className="dot"></span>WHAT WE DO
           </span>
-          <h2>Four disciplines. One accountable team.</h2>
+          <h2>AI, web, content and SEO. One accountable team.</h2>
         </div>
         <div className="service-grid reveal">
           {SERVICES.map((service) => (
@@ -98,7 +135,7 @@ export default function Home() {
             <span className="mono step">02</span>
             <div>
               <h3>Build sprint</h3>
-              <p>Our engineers build the site, content system and automations in parallel.</p>
+              <p>Our engineers build the site, content system and AI automations in parallel.</p>
             </div>
           </li>
           <li>
@@ -112,7 +149,7 @@ export default function Home() {
             <span className="mono step">04</span>
             <div>
               <h3>Ongoing management</h3>
-              <p>We keep it running: content, SEO and automation, managed month to month.</p>
+              <p>We keep it running: content, Google SEO and AI automation, managed month to month.</p>
             </div>
           </li>
         </ol>
@@ -125,8 +162,8 @@ export default function Home() {
           </span>
           <h2>See how it comes together.</h2>
           <p>
-            Illustrative case studies showing how we approach web, content and automation projects
-            for Singapore SMEs.
+            Illustrative case studies showing how we approach AI, web, content and automation
+            projects for Singapore SMEs.
           </p>
         </div>
         <div className="section-cta reveal">
