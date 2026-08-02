@@ -22,11 +22,6 @@ export const SITE_FAQS: FAQ[] = [
       "Website development starts at a flat S$800 setup fee, plus S$50 a month for hosting, your domain and ongoing maintenance. See the Web Development page for the full breakdown. AI solutions, content and SEO work varies more by scope, so we price those on the first call rather than publishing generic package prices that don't reflect real work.",
   },
   {
-    question: "Can my project use the PSG (Productivity Solutions Grant)?",
-    answer:
-      "PSG can offset part of the cost of eligible digital projects for qualifying Singapore SMEs. Eligibility depends on your business's registration and the specific solution. We're happy to talk through whether your project might qualify as part of your scope call.",
-  },
-  {
     question: "Do you only build websites, or can you help with AI, content and SEO too?",
     answer:
       "All four disciplines, AI solutions, web development, content management and Google SEO, are handled by the same team, so they can be engaged together or separately depending on what you actually need.",

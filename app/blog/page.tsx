@@ -20,8 +20,21 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogIndexPage() {
+export default async function BlogIndexPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ category?: string }>;
+}) {
   const posts = getSortedBlogPosts();
+  const { category } = await searchParams;
+
+  const categories = Array.from(new Set(posts.map((post) => post.category))).sort((a, b) =>
+    a.localeCompare(b)
+  );
+  const activeCategory = category && categories.includes(category) ? category : null;
+  const filteredPosts = activeCategory
+    ? posts.filter((post) => post.category === activeCategory)
+    : posts;
 
   return (
     <main>
@@ -38,18 +51,44 @@ export default function BlogIndexPage() {
         intro="Practical write-ups on web development, SEO, AI search and how we work with Singapore SMEs."
       />
       <section>
-        <div className="card-grid reveal">
-          {posts.map((post) => (
-            <Link key={post.slug} href={`/blog/${post.slug}`} className="card">
-              <div className="card-meta">
-                <span className="card-tag">{post.category}</span>
-                <span>{post.readTime}</span>
-              </div>
-              <h3>{post.title}</h3>
-              <p>{post.description}</p>
+        <nav className="blog-filters" aria-label="Filter posts by topic">
+          <Link
+            href="/blog"
+            className={`blog-filter${!activeCategory ? " is-active" : ""}`}
+          >
+            All topics
+            <span className="blog-filter-count">{posts.length}</span>
+          </Link>
+          {categories.map((cat) => (
+            <Link
+              key={cat}
+              href={`/blog?category=${encodeURIComponent(cat)}`}
+              className={`blog-filter${activeCategory === cat ? " is-active" : ""}`}
+            >
+              {cat}
+              <span className="blog-filter-count">
+                {posts.filter((post) => post.category === cat).length}
+              </span>
             </Link>
           ))}
-        </div>
+        </nav>
+
+        {filteredPosts.length > 0 ? (
+          <div className="card-grid reveal">
+            {filteredPosts.map((post) => (
+              <Link key={post.slug} href={`/blog/${post.slug}`} className="card">
+                <div className="card-meta">
+                  <span className="card-tag">{post.category}</span>
+                  <span>{post.readTime}</span>
+                </div>
+                <h3>{post.title}</h3>
+                <p>{post.description}</p>
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <p className="blog-empty">No posts in this topic yet. Check back soon.</p>
+        )}
       </section>
     </main>
   );

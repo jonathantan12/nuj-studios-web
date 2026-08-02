@@ -66,7 +66,7 @@ export function buildLlmsTxt(): string {
     `- [Blog](${SITE_URL}/blog): Practical writing on AI, web development, SEO and running a lean digital operation.`
   );
   lines.push(
-    `- [FAQ](${SITE_URL}/faq): Answers to common questions about pricing, contracts, timelines and the PSG grant.`
+    `- [FAQ](${SITE_URL}/faq): Answers to common questions about pricing, contracts and timelines.`
   );
   lines.push(`- [Glossary](${SITE_URL}/glossary): Plain-English definitions for SEO and AI search terms.`);
   lines.push("");

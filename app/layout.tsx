@@ -113,6 +113,7 @@ export default function RootLayout({
     <html
       lang="en"
       className={`${spaceGrotesk.variable} ${inter.variable} ${ibmPlexMono.variable}`}
+      suppressHydrationWarning
     >
       <body>
         <div className="topbar mono">Now booking Q3 project slots for Singapore SMEs</div>
