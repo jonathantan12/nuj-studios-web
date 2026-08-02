@@ -256,6 +256,90 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "why-we-test-ai-skills-before-using-them",
+    title: "Why We Test Every AI 'Skill' Before It Touches Client Work",
+    metaTitle: "Why We Test AI Skills Before Using Them",
+    description:
+      "Most teams bolt AI \"skills\" onto their coding agents and trust the output. Here's why we test ours first, and how we use AI agents day to day.",
+    date: "2026-08-02",
+    readTime: "7 min read",
+    category: "AI Automation",
+    tags: ["AI Agents", "AI Skills", "AI Automation"],
+    author: "nuj studios team",
+    content: [
+      {
+        type: "p",
+        text: "We recently watched a talk from Philip, an engineer on Google DeepMind's Gemini API and Agents team, about a problem that's becoming common as more teams, including ours, lean on coding agents like Claude Code and Gemini CLI: everyone is writing \"skills\" for their AI agents, and almost nobody is testing whether those skills actually help. His framing stuck with us, because it's exactly the gap we've had to close in our own workflow.",
+      },
+      { type: "h2", text: "What an AI \"skill\" actually is" },
+      {
+        type: "p",
+        text: "If you're not deep in this world, a skill is essentially a folder of instructions an AI coding agent can read when it needs to do something specific, like generate code for an API it wasn't trained on, follow a team's coding style, or run a recurring task the same way every time. Agents don't load every skill into every conversation. They work on what's called progressive disclosure: a short title and description sit in the agent's context at all times so it knows when a skill might be relevant, and only if it decides to use that skill does it go and read the fuller instructions, digging into deeper reference files only if it needs more detail. It's designed to be cheap most of the time and thorough when it counts.",
+      },
+      {
+        type: "p",
+        text: "The talk drew a useful line between two kinds of skills. Capability skills teach an agent something it can't yet do reliably, like writing correct code against a brand-new API. Those are temporary; as models improve, you retire them. Preference skills encode something specific to how a team works, coding conventions, a client's brand voice, a QA process. Those last much longer, because a general-purpose model has no way of knowing those preferences on its own.",
+      },
+      { type: "h2", text: "The part almost everyone skips" },
+      {
+        type: "p",
+        text: "Here's the number that stood out from the talk: SkillBench, an open benchmark that's evaluated tens of thousands of published skills, found that skills genuinely do work, improving agent performance by roughly 15% on average. But it also found that almost none of those skills had been tested, most were AI-generated rather than written by a person, and AI-generated skills actually hurt performance more often than they helped.",
+      },
+      {
+        type: "quote",
+        text: "Human-written skills are the best we can provide. AI-generated skills can impact performance negatively.",
+        source: "Philip, Google DeepMind (Gemini API & Agents team)",
+      },
+      {
+        type: "p",
+        text: "That tracks with something we'd noticed ourselves: it's very easy to ask a coding agent to write its own skill file after a session, skim it, and accept it because it roughly covers what happened. The problem is you can't tell from reading it whether it'll actually help next time, because agents are non-deterministic. If a task fails, you don't automatically know whether the skill was bad or the task was just genuinely hard for the model. The only way to know the difference is to test it, more than once.",
+      },
+      { type: "h2", text: "How we use AI agents and skills at nuj studios" },
+      {
+        type: "p",
+        text: "This isn't an abstract concern for us. Coding agents are part of how we build and maintain client sites, run SEO and structured-data checks, and manage recurring operational work, so a skill that quietly underperforms doesn't just waste our time, it can ship into a client's site. A few ways this shows up day to day:",
+      },
+      {
+        type: "ul",
+        items: [
+          "Workflow skills for repeatable dev tasks: opening pull requests, writing release notes, running our pre-deploy checklist. If a process is genuinely the same every time, we'd rather script it and let the agent trigger the script than re-explain the steps in prose and hope it follows them correctly.",
+          "Preference skills for client standards: house coding conventions, a client's brand voice for AI-generated copy, our structured-data and accessibility baseline. These encode things a general model has no way of knowing on its own, so we treat them as durable and keep them tight.",
+          "Capability skills for anything new: a framework update, a new API, a platform change we haven't fully absorbed yet. We expect to retire most of these within a few months, once the underlying models catch up.",
+        ],
+      },
+      {
+        type: "p",
+        text: "This is also where a lot of our actual problem-solving happens. When something breaks in a client automation, a lead form that stopped notifying the right inbox, a scraper that silently changed behaviour after a site update, the fastest path back to a fix is usually an agent working through the codebase with the right skill loaded, rather than us tracing it manually line by line. The skill doesn't do the thinking for us, it just means the agent starts from the right context instead of guessing.",
+      },
+      { type: "h2", text: "What we check before a skill goes near client work" },
+      {
+        type: "p",
+        text: "Taking the talk's advice and applying it to how we actually ship things, here's roughly what we hold a skill to before we trust it:",
+      },
+      {
+        type: "ul",
+        items: [
+          "The description earns its keep. It has to say why the agent should use the skill, how, and when, in plain directives, not a soft suggestion. A weak description is the single biggest reason skills get skipped when they're needed or triggered when they're not.",
+          "Short body, deep references. The main instructions stay lean because the agent pays that cost on every use. Anything client- or platform-specific lives in a reference file the agent only opens if it actually needs it.",
+          "Goals, not scripts, unless it really is a script. If a task is genuinely the same steps every time, we write an actual script and have the agent run it. If it needs judgment, we describe the outcome we want and leave the steps to the agent.",
+          "Negative cases, not just positive ones. We write a handful of prompts where the skill should not trigger, so we can catch a skill that's too eager and starts firing on unrelated work.",
+          "Run it more than once. One good result doesn't mean much given how non-deterministic these agents are. We want to see it hold up across a handful of runs before we trust it.",
+          "Revisit, don't assume it's permanent. Every few months we check whether a skill is still pulling its weight, or whether the model has gotten good enough to not need it anymore.",
+        ],
+      },
+      { type: "h2", text: "The takeaway if you're using AI anywhere in your business" },
+      {
+        type: "p",
+        text: "If you're already using AI agents for content, support, or internal workflows, and you've built anything resembling a \"skill\" or a custom instruction set for it, this is worth five minutes of honesty: has anyone actually tested whether it helps, or did it get written once, look reasonable, and get left alone? The gap between a demo that looks convincing and a system you can actually rely on for client work is almost always in that untested middle ground. It's a small amount of upfront work, and it's the difference between an AI agent that quietly makes mistakes and one you can actually trust with real work.",
+      },
+      {
+        type: "link",
+        text: "Watch the full talk: \"Don't Ship Skills Without Evals\" (Philip, Google DeepMind)",
+        href: "https://www.youtube.com/watch?v=0vphxNt4wyk",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {
