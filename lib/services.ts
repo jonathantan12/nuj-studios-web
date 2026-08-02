@@ -31,12 +31,22 @@ export const SERVICES: Service[] = [
       "Custom AI solutions: agents for CRM, invoicing, scheduling and lead generation, wired into how your business already runs.",
     summary:
       "Custom AI solutions, from working out where AI actually fits your business to building and wiring the automation in. Agents for your CRM, invoicing, scheduling and lead-gen tools, so your team spends less time on repetitive operational work.",
+    context: {
+      heading: "AI built to be efficient, not impressive",
+      body: [
+        "Most businesses only ever encounter one shape of \"AI\": a chatbot bolted onto a website. Our work covers more of the actual AI ecosystem than that: AI agents that take real actions instead of just describing what they'd do, workflow automation that connects the tools you already run, sovereign deployment options that keep your data and models under your own control, model evaluation that checks a solution is actually reliable before it goes live, retrieval-augmented generation that grounds answers in your own business documents, and fine-tuning or model customization when a general-purpose model isn't specific enough for what you need.",
+        "We're also not reflexively reaching for the biggest, most expensive model for every problem. A lot of what actually works well in production is a traditional machine learning model, for forecasting, classification, or anomaly detection, doing the part of the job it's genuinely better and cheaper at, paired with an LLM only where language understanding is actually the bottleneck. That combination is usually what keeps a solution efficient, effective, and low-cost, instead of over-engineered for the sake of using the newest thing.",
+      ],
+    },
     deliverables: [
       "A working session to find where AI genuinely helps your business, not where it's just trendy",
-      "Custom AI solutions and automations wired into the CRM, invoicing or scheduling tools you already use",
-      "AI agents for lead qualification, FAQ handling, or internal operations",
-      "Documentation your team can maintain without an engineer on staff",
-      "Ongoing monitoring and adjustment as your workflows change",
+      "AI agents that take real actions, for lead qualification, FAQ handling, or internal operations, not chatbots that just describe what they'd do",
+      "Workflow automation wired into the CRM, invoicing, scheduling or lead-gen tools you already use, no platform migration required",
+      "Sovereign deployment options, so your data and models can stay under your own control instead of defaulting to a third-party API",
+      "Model evaluation and testing before anything goes live, so a solution is proven accurate and reliable, not just impressive in a demo",
+      "Retrieval-augmented generation (RAG) that grounds AI answers in your actual business documents and data",
+      "Traditional machine learning, like forecasting, classification and anomaly detection, combined with LLMs wherever that's the more efficient and accurate tool for the job",
+      "Documentation your team can maintain without an engineer on staff, and ongoing monitoring as your workflows change",
     ],
     faqs: [
       {

@@ -7,7 +7,7 @@ import { SITE_FAQS } from "@/lib/faqs";
 
 const TITLE = "FAQ";
 const DESCRIPTION =
-  "Answers to the questions we get asked most before a project starts, from pricing to contracts to the PSG grant.";
+  "Answers to the questions we get asked most before a project starts, from pricing to contracts to timelines.";
 
 export const metadata: Metadata = {
   title: TITLE,
