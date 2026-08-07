@@ -51,7 +51,7 @@ export function buildLlmsTxt(): string {
     `- [Work With Us](${SITE_URL}/work-with-us): Why Singapore SMEs hire ${SITE_NAME}, and how a first coffee chat works.`
   );
   lines.push(
-    `- [Case Studies](${SITE_URL}/case-studies): Illustrative sample projects showing our approach, not verified completed client engagements.`
+    `- [Case Studies](${SITE_URL}/case-studies): Mostly illustrative sample projects showing our approach; a few entries are real, in-house builds, labeled as such.`
   );
   lines.push(`- [Clients](${SITE_URL}/clients): Industries and business types we're built for.`);
   lines.push(
@@ -165,12 +165,18 @@ export function buildLlmsFullTxt(): string {
   sections.push(serviceLines.join("\n").trimEnd());
 
   // Case studies
-  const caseStudyLines: string[] = ["## Case studies", "", "Illustrative sample projects, not verified completed client engagements.", ""];
+  const caseStudyLines: string[] = [
+    "## Case studies",
+    "",
+    "Mostly illustrative sample projects, not verified completed client engagements. Entries marked \"Real build\" are genuine, in-house work.",
+    "",
+  ];
   for (const study of CASE_STUDIES) {
     caseStudyLines.push(`### ${study.title}`);
     caseStudyLines.push("");
     caseStudyLines.push(`URL: ${SITE_URL}/case-studies/${study.slug}`);
     caseStudyLines.push(`Markdown: ${SITE_URL}/md/case-studies/${study.slug}`);
+    caseStudyLines.push(`Type: ${study.kind === "internal" ? "Real, in-house build" : "Illustrative sample project"}`);
     caseStudyLines.push(`Industry: ${study.industry}`);
     caseStudyLines.push(`Services used: ${study.services.join(", ")}`);
     caseStudyLines.push("");

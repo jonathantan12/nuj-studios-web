@@ -2,7 +2,7 @@ import type { BlogBlock, BlogPost } from "./blog-posts";
 import { SITE_URL } from "./site-config";
 
 /** `headingLevel` is the markdown level for the post title; body h2/h3 blocks nest one and two below it. */
-function blockToMarkdown(block: BlogBlock, headingLevel: number): string {
+export function blockToMarkdown(block: BlogBlock, headingLevel: number): string {
   const h2 = "#".repeat(headingLevel + 1);
   const h3 = "#".repeat(headingLevel + 2);
 

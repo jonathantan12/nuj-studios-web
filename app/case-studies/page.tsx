@@ -6,7 +6,7 @@ import { CASE_STUDIES } from "@/lib/case-studies";
 
 const TITLE = "Case Studies";
 const DESCRIPTION =
-  "Illustrative sample projects showing how nuj studios approaches web development, SEO and AI automation briefs for Singapore SMEs.";
+  "How nuj studios approaches web development, SEO and AI automation briefs for Singapore SMEs, plus real, in-house builds like our own AI agent harness.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ export default function CaseStudiesPage() {
       <PageHero
         eyebrow="PROOF OF WORK"
         title="How we approach real SME briefs."
-        intro="These are illustrative sample projects, not completed client engagements: a preview of how we'd approach briefs like these. Ask us for references on a call."
+        intro="Most of these are illustrative sample projects, not completed client engagements: a preview of how we'd approach briefs like these. A few are real, in-house builds, labeled as such. Ask us for references on a call."
       />
       <section>
         <div className="card-grid reveal">

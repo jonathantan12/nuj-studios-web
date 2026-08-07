@@ -3,7 +3,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import Breadcrumbs from "../../_components/Breadcrumbs";
 import PageHero from "../../_components/PageHero";
+import ArticleBody from "../../_components/ArticleBody";
+import CopyMarkdownButton from "../../_components/CopyMarkdownButton";
 import { CASE_STUDIES, getAllCaseStudySlugs, getCaseStudy } from "@/lib/case-studies";
+import { caseStudyToMarkdown } from "@/lib/case-study-markdown";
 import { getService } from "@/lib/services";
 import { SITE_URL, WHATSAPP_URL } from "@/lib/site-config";
 
@@ -69,25 +72,37 @@ export default async function CaseStudyDetailPage({
         ]}
       />
       <PageHero eyebrow={study.industry} title={study.title} intro={study.summary}>
-        <p className="notice mono">
-          Illustrative sample project: this shows how we&apos;d approach a brief like this, not a
-          completed client engagement.
-        </p>
+        {study.kind === "internal" ? (
+          <p className="notice mono">
+            Real build: this is a genuine, in-house project we&apos;ve shipped, described
+            honestly, without client-confidential specifics.
+          </p>
+        ) : (
+          <p className="notice mono">
+            Illustrative sample project: this shows how we&apos;d approach a brief like this, not a
+            completed client engagement.
+          </p>
+        )}
+        <CopyMarkdownButton markdown={caseStudyToMarkdown(study)} />
       </PageHero>
 
       <section>
-        <div className="prose reveal">
-          <h2>The challenge</h2>
-          <p>{study.challenge}</p>
-          <h2>Our approach</h2>
-          <ul>
-            {study.approach.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          <h2>The outcome</h2>
-          <p>{study.outcome}</p>
-        </div>
+        {study.content ? (
+          <ArticleBody blocks={study.content} />
+        ) : (
+          <div className="prose reveal">
+            <h2>The challenge</h2>
+            <p>{study.challenge}</p>
+            <h2>Our approach</h2>
+            <ul>
+              {study.approach.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <h2>The outcome</h2>
+            <p>{study.outcome}</p>
+          </div>
+        )}
       </section>
 
       {relatedServices.length > 0 && (
