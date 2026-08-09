@@ -5,7 +5,7 @@ export const SITE_DESCRIPTION =
   "Custom AI solutions, website development, content management, Google SEO and digital solutions consulting, all handled by one in-house Singapore team.";
 export const CONTACT_EMAIL = "admin@nujstudios.com";
 
-export const WHATSAPP_NUMBER = "6596552844";
+export const WHATSAPP_NUMBER = "6589791210";
 export const WHATSAPP_MESSAGE =
   "Hi Vivian, I'm interested in nuj studios' services and would love to learn more. Could we set up a coffee chat, call, or Teams meeting to chat about what my business needs?";
 export const WHATSAPP_URL = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(WHATSAPP_MESSAGE)}`;

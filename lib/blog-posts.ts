@@ -2477,6 +2477,253 @@ export const BLOG_POSTS: BlogPost[] = [
       },
     ],
   },
+  {
+    slug: "how-an-ai-agent-actually-executes-a-tool-call",
+    title: "Under the Hood: How an AI Agent Actually Turns a Sentence Into a Real Action",
+    metaTitle: "How an AI Agent Actually Executes a Tool Call",
+    description:
+      "An LLM has no hands and no terminal access. Here's the six-step pipeline, registration, generation, interception, parsing, execution, and feedback, that turns a prediction engine into something that can safely take real action, and why we build the execution step narrower than most.",
+    date: "2026-08-09",
+    readTime: "8 min read",
+    category: "AI Automation",
+    tags: ["AI Agents", "Tool Calling", "Harness"],
+    author: "nuj studios team",
+    content: [
+      {
+        type: "p",
+        text: "It's easy to watch an AI agent create a file, send a message, or update a record and assume the model did it, the same way a person would: opened a terminal, typed a command, pressed enter. It didn't, because it can't. An LLM is a function that predicts the next token. It has no hands, no terminal, no awareness that an operating system exists underneath it. Every action an AI agent appears to take is the output of a pipeline sitting around the model, deciding what a stream of predicted text is allowed to trigger in the real world. We've written before about that pipeline in the abstract, as the harness half of AI Agent = LLM + Harness. This is the concrete version: the six steps between a model deciding it wants to do something and that thing actually, safely, happening.",
+      },
+      {
+        type: "h2",
+        text: "Step one: the model can't ask for something it's never been told exists",
+      },
+      {
+        type: "p",
+        text: "Before a model can request an action, it has to be told the action is available at all, and told in a very specific shape: a name, a plain-language description of when to use it, and a validated structure for its input. That registration step is also where scope gets decided, and we treat it as the single most consequential decision in the whole pipeline. Every product on our harness runs as a Skill, and a Skill's tool list is exactly and only the actions that product's job requires. A tutoring agent gets a curriculum lookup and a worked-solution lookup. It does not get a generic, do-anything tool that happens to be capable of far more than tutoring ever needs, because a capability nobody asked for is a capability nobody's watching.",
+      },
+      {
+        type: "h2",
+        text: "Step two: what the model actually outputs isn't prose, it's a request",
+      },
+      {
+        type: "p",
+        text: "When a user's message matches something a registered tool can do, the model doesn't write \"sure, I'll take care of that\" and stop there. It shifts into a distinct output mode and emits a structured block naming the tool and the arguments it wants to call it with, sitting alongside or instead of ordinary reply text. This is still just predicted text, the model has no more special access to the world in this mode than in any other, but it's text shaped precisely enough that software sitting downstream can read it as an instruction rather than a sentence.",
+      },
+      {
+        type: "h2",
+        text: "Step three: catching the request before it reaches anyone",
+      },
+      {
+        type: "p",
+        text: "This is the part that actually deserves the word \"agent.\" As the model's response streams back, the harness is watching that stream, not just relaying it, and the moment it sees a tool call take shape, it breaks the direct path from model to chat window. Nothing about this is visible to whoever's waiting on a reply; from their side it just looks like a brief pause. Underneath, control has shifted from \"display this text to a person\" to \"hand this payload to an internal routine,\" and if the tool being requested is one that needs a human's sign-off before it runs, that's exactly where the harness parks it and waits, a pattern we've written about in more depth as part of tracing a message end to end.",
+      },
+      {
+        type: "h2",
+        text: "Step four: turning a string back into something worth trusting",
+      },
+      {
+        type: "p",
+        text: "Whatever arrives over the network is just bytes, and even a perfectly formed tool call is, to the software receiving it, one long string until something deliberately turns it back into a structure. That happens in two passes. First, plain deserialization: extracting the tool call block and decoding it into a real object with a name and a set of arguments. Second, and more important, structural validation against the schema that tool was registered with in step one, checking the tool name is one this Skill is actually allowed to use, checking every argument is present and the right type, rejecting anything that doesn't match rather than guessing at what the model probably meant.",
+      },
+      {
+        type: "p",
+        text: "Models occasionally produce malformed output, a missing bracket, a badly escaped quote, especially under load or on a smaller model. When that happens we'd rather the call fail loudly and get rejected than have something downstream try to charitably interpret broken input, the same fail-safe instinct behind how we handle a bad memory compaction: a rejected action that didn't happen is recoverable. A malformed action that partially happened usually isn't.",
+      },
+      {
+        type: "h2",
+        text: "Why we don't hand our agent a generic shell",
+      },
+      {
+        type: "p",
+        text: "This is the step where a lot of AI tooling takes a shortcut worth naming directly, because it's the one that turns a promising demo into a real liability. The easiest possible tool to build is an open one, something like a single run_terminal_command tool whose entire input schema is one free-text string, piped straight into a subprocess. It's genuinely useful for a demo, because it can do anything. That's also exactly the problem: its schema promises nothing, so every bit of safety work has to happen after the model has already decided what string to send, which is the latest and worst possible point to catch a mistake.",
+      },
+      {
+        type: "p",
+        text: "We build the other way on purpose. Rather than one wide tool with a free-text argument, a Skill gets several narrow tools, each with an input shape that structurally cannot express more than the one thing it's meant to do. Our agent's own database access is a concrete example: not one tool that runs arbitrary SQL, but a read tool that structurally rejects anything except a SELECT before it ever reaches the database, and a separate write tool that goes through approval every time. Neither tool can be talked into doing the other's job by a cleverly worded input, because the schema itself, not a rule the model is trusted to follow, is what makes that impossible.",
+      },
+      {
+        type: "h2",
+        text: "Step five: executing under limits, not under trust",
+      },
+      {
+        type: "p",
+        text: "Once a call has been validated, it's resolved against a registry that maps its name to real, callable code and handed its arguments. What happens next is scoped tightly on purpose. Anything that writes, sends, creates, or deletes waits for a human to approve it first, the default on every tool we build unless it's structurally incapable of changing anything. Anything that runs, runs against infrastructure the agent owns and nothing else, a sandboxed database of its own rather than a real filesystem or a live production system, so the blast radius of a mistake is a table the agent made for itself, not something that matters. And approval, once given, is checked against a record of what's already been completed before anything actually executes, specifically so a retried approval, from a flaky connection or a double click, returns the stored result instead of running the action a second time.",
+      },
+      {
+        type: "h2",
+        text: "Step six: closing the loop so the model actually learns what happened",
+      },
+      {
+        type: "p",
+        text: "Execution isn't the end of the pipeline. The model is still sitting mid-turn, waiting to find out whether its request succeeded, and the outcome, success or failure, gets written back into the conversation as its own message, tagged with the specific call it belongs to, so the model can tell which result answers which request if more than one was in flight. Only once that result is back in context does the model generate the reply a person actually sees. Every step of this, the call, the pause, the result, gets persisted as it happens rather than reconstructed afterward, which is what makes a conversation resumable later without the agent quietly losing track of its own actions.",
+      },
+      {
+        type: "h2",
+        text: "What this pipeline is actually buying you",
+      },
+      {
+        type: "p",
+        text: "None of these six steps show up in a quick demo, because a demo runs once, on a clean input, with nobody sending a malformed request or double-clicking approve. They matter on the hundredth run, the thousandth, the one where a connection drops mid-call or a model hallucinates an argument that almost fits the schema. If you're evaluating an AI vendor and their entire pitch is \"the model can call this tool,\" it's worth asking the boring question directly: what validates the call before it runs, what's it allowed to touch, and what happens if the same approval arrives twice. A model that can request an action is the easy half of the equation. A pipeline that only lets the right actions actually happen, safely, exactly once, is the half that decides whether you can leave it running unattended.",
+      },
+    ],
+  },
+  {
+    slug: "langfuse-and-harbor-for-ai-agent-evals",
+    title: "Where Langfuse and Harbor Fit Into How We Evaluate Our Own AI Agents",
+    metaTitle: "Langfuse and Harbor for AI Agent Evals",
+    description:
+      "Our own self-monitoring pass catches an agent quietly going off the rails. It was never built to grade whether an answer was actually good, or to prove a change is safe before it ships. That's the gap Langfuse and Harbor fill.",
+    date: "2026-08-09",
+    readTime: "7 min read",
+    category: "AI Automation",
+    tags: ["AI Agents", "Evaluation", "Langfuse", "Harbor"],
+    author: "nuj studios team",
+    content: [
+      {
+        type: "p",
+        text: "We've written before about the self-monitoring pass we built to watch our own AI agent: a read-only check that scans everything the harness already persists, tool calls, run outcomes, memory recalls, looking for the specific patterns that mean something's quietly gone wrong even though nothing crashed. It's genuinely useful, and it caught real problems during development. It was also never built to answer two other questions we kept running into: was a given answer actually correct, and is it safe to let a change near a client before someone finds out the hard way. Those are different problems from operational drift, and rather than keep bolting custom checks onto our own eval pass, we're wiring in two open-source projects built specifically for them: Langfuse and Harbor.",
+      },
+      {
+        type: "h2",
+        text: "What our own eval pass was never built to answer",
+      },
+      {
+        type: "p",
+        text: "The self-monitoring pass is deliberately narrow. It counts things: how many times a tool failed, how many memory searches came back empty, how many runs stalled instead of finishing. That's exactly the right shape for catching structural drift, but it has no opinion on content. A tool call that succeeded and returned a perfectly well-formed result can still have been the wrong tool call, or the right tool call followed by a reply that got the client's policy wrong, misread what they were asking, or answered a different question than the one in front of it. None of that shows up as a failure in any log. It shows up as a bad answer that happened to execute cleanly, and our structural checks have no way to see it, because they were never reading for meaning in the first place.",
+      },
+      {
+        type: "p",
+        text: "There's a second blind spot that's less about individual answers and more about timing. Everything the self-monitoring pass catches, it catches after the fact, on a run that already happened, potentially one a client already saw. It's an after-the-fact audit, not a gate. Nothing about it stops a bad change from shipping in the first place; it just makes sure we find out reasonably quickly once it has.",
+      },
+      {
+        type: "h2",
+        text: "Two different questions, not one",
+      },
+      {
+        type: "p",
+        text: "It's worth being precise about the two gaps separately, because they call for different tools. \"Was this specific answer, from this specific conversation, actually good\" is a live-traffic quality question, and answering it means grading real output against real context, at the pace conversations actually happen. \"Is this change to a Skill, a prompt, or the underlying model safe to ship\" is a pre-deployment safety question, and answering it means running a candidate change against a fixed set of scenarios, repeatedly, before a client ever sees it. We looked at building both ourselves and decided against it, for the same reason we've written about not reinventing things that are already solved well: tracing infrastructure, LLM-as-judge scoring, and distributed benchmark running are each their own multi-month project, and none of it is the part of our harness that's actually specific to us. The part worth our own engineering time is the approval gate, the sandboxing, the Skill boundaries. The eval tooling around it doesn't need to be homegrown to be trustworthy.",
+      },
+      {
+        type: "h2",
+        text: "Langfuse: putting a judge on the loop we're already recording",
+      },
+      {
+        type: "p",
+        text: "Langfuse is an open-source LLM engineering platform built around exactly the signal our harness already produces: a detailed, step-by-step record of what an agent did during a run. Rather than build our own tracing UI on top of that record, we're feeding it into Langfuse directly, which turns each run into a structured trace, the model calls, the tool calls, the intermediate steps, viewable end to end instead of reconstructed by hand from raw logs. That alone is useful for debugging. The part that actually closes our quality gap is what sits on top of it: LLM-as-judge evaluation, where a separate model scores a trace against a specific rubric, did the answer stay within the client's stated policy, did it use the retrieved context correctly, did it pick the right Skill for the request, rather than a human having to read every conversation to find the ones that went sideways.",
+      },
+      {
+        type: "p",
+        text: "The other half of Langfuse we're leaning on is datasets: a fixed, versioned set of real conversations pulled from a Skill's own history, which we can re-run against a new prompt or a swapped model and compare scores against the previous version before deciding anything ships. That's the same instinct behind \"run it more than once before you trust it\" from how we test skills generally, just formalized into something repeatable instead of a few manual spot-checks. Because Langfuse is genuinely self-hostable, a Docker Compose setup gets a working instance running locally, we're keeping client conversation data on infrastructure we control rather than sending transcripts to a third-party SaaS product by default, the same preference that's shaped other infrastructure decisions we've made.",
+      },
+      {
+        type: "h2",
+        text: "Harbor: proving a change is safe before it goes near a client",
+      },
+      {
+        type: "p",
+        text: "Harbor comes from the Terminal-Bench team and describes itself plainly as a framework for evaluating and improving agents: point it at a containerized, reproducible task environment, run one or more agents through it, and get scored pass/fail results back instead of one anecdotal run someone happened to watch. It's built and best known for benchmarking coding agents like Claude Code, OpenHands, and Codex CLI against standardized terminal-based tasks, and it can scale that across thousands of environments in parallel using cloud providers like Daytona or Modal rather than running everything on one machine.",
+      },
+      {
+        type: "p",
+        text: "Our own agent isn't a coding agent, so we're not pointing it at Harbor's built-in benchmark suite. What we're actually adopting is the underlying pattern: define a task as a reproducible, containerized environment with a clear pass/fail condition, then run a candidate change against a whole set of those tasks, many times each, before it ships. We're building our own benchmark tasks this way, a fixed set of scheduling scenarios, a fixed set of the kinds of customer questions a given Skill actually gets, and running a new prompt or a new model against all of them in parallel rather than eyeballing a handful of manual runs. That's the pre-deployment gate our self-monitoring pass was never positioned to be, catching a regression before a client ever becomes the first person to find it.",
+      },
+      {
+        type: "h2",
+        text: "How the three layers actually stack",
+      },
+      {
+        type: "p",
+        text: "None of these three replace each other, because each one is watching for a different failure at a different point in time. Harbor runs before a change ships, against fixed scenarios, and answers whether a candidate change is safe to release at all. Langfuse runs on live traffic and on regression datasets, scoring whether real answers to real questions were actually correct, not just structurally valid. Our own self-monitoring pass runs continuously in production after everything else, catching the operational drift that neither of the other two is looking for, duplicate tables, a tool quietly failing more than it used to, a run that stalled instead of finishing. A change can pass Harbor's benchmark, score well in Langfuse, and still, months later, start drifting in a way only the self-monitoring pass would catch. All three are necessary. None of them is sufficient alone.",
+      },
+      {
+        type: "h2",
+        text: "Why this is worth wiring in rather than building further ourselves",
+      },
+      {
+        type: "p",
+        text: "We keep coming back to the same formula in how we think about this: AI Agent = LLM + Harness, and the harness is where the real engineering effort belongs, because it's the part that's actually specific to what we're building. Tracing infrastructure, judge-scoring pipelines, and distributed benchmark runners are exactly the kind of unglamorous, generic infrastructure that's easy to skip and expensive to have skipped, and none of it differentiates one agent from another the way its approval flow, its sandboxing, or its Skill boundaries do. Langfuse and Harbor are mature, open-source, and self-hostable, which means we get the eval layer without handing a client's data to a vendor or spending months rebuilding something that already exists. The part we're still building ourselves is the part that's ours to build: the specific benchmark scenarios, the specific judge rubrics, the specific thresholds that decide whether a change is actually ready. The tooling underneath just needs to be trustworthy, not novel.",
+      },
+    ],
+  },
+  {
+    slug: "ai-frameworks-vs-ai-toolkits-explained",
+    title: "AI Frameworks vs AI Toolkits: What Actually Sets Them Apart",
+    metaTitle: "AI Frameworks vs AI Toolkits Explained",
+    description:
+      "LangChain, CrewAI, LlamaIndex, and the Vercel AI SDK all get lumped together as \"the AI stack.\" They solve different problems. Here's what an AI framework is actually for, and where a toolkit like the AI SDK fits instead.",
+    date: "2026-08-09",
+    readTime: "7 min read",
+    category: "AI Automation",
+    tags: ["AI Frameworks", "AI SDK", "AI Automation"],
+    author: "nuj studios team",
+    content: [
+      {
+        type: "p",
+        text: "\"AI framework\" gets used loosely enough that it's started to mean almost nothing on its own. A vendor pitch, a job listing, and a GitHub README can all use the word to describe genuinely different things: a full multi-agent orchestration engine, a retrieval pipeline, or just a wrapper around an API call. Meanwhile terms like \"AI SDK\" or \"AI toolkit\" get treated as rough synonyms, when they're actually describing a different layer of the stack entirely. If you're choosing a vendor, hiring for a role, or deciding what to build on top of, that distinction is worth being precise about, because it changes what you're actually signing up for.",
+      },
+      { type: "h2", text: "What problem an AI framework is actually solving" },
+      {
+        type: "p",
+        text: "A single call to a large language model is stateless. You send a prompt, you get text back, and the model has no memory of what happened before or after. That's fine for a one-off request. It stops being fine the moment your product needs to remember earlier turns of a conversation, decide which of several tools to call next, pull relevant information from your own data before answering, or hand a task between more than one specialized agent. An AI framework exists to fill exactly that gap: it manages the state between calls, decides what runs next, retries the steps that fail, and gives a team a shared vocabulary, chains, agents, graphs, so the same pattern doesn't get reinvented slightly differently in every project.",
+      },
+      {
+        type: "p",
+        text: "That's also why frameworks are opinionated by design, not by accident. Adopting one means adopting its idea of what a \"step\" is, how agents hand off to each other, and how state gets stored between them. That opinionation is the actual product being sold. The raw model calls underneath are the easy, interchangeable part; any provider's plain API already does that.",
+      },
+      { type: "h2", text: "The frameworks most likely to come up" },
+      {
+        type: "p",
+        text: "The landscape moves fast enough that any list dates quickly, but a handful of frameworks keep showing up across vendor stacks and engineering teams as of 2026:",
+      },
+      {
+        type: "ul",
+        items: [
+          "LangChain and LangGraph: LangChain popularized the \"chain\" pattern, LLM calls linked together with memory and tools in between, and has the largest ecosystem of provider and data-source integrations. LangGraph sits on top of it for cases that need explicit state machines: branching, looping, and multi-agent handoffs modeled as a graph rather than a straight line.",
+          "LlamaIndex: built specifically around retrieval-augmented generation, ingesting, indexing, and querying your own documents or databases so a model can answer from your actual data instead of only what it was trained on. Less general-purpose than LangChain, more focused on doing the data layer well.",
+          "CrewAI: a role-based multi-agent framework. You define agents as if they were job titles, a researcher, a writer, a reviewer, and CrewAI handles the coordination of who does what and in which order, aimed at teams who think in terms of a small team of specialists rather than a single agent with many tools.",
+          "Microsoft AutoGen, now developed as AG2: agents that solve a task by having a structured conversation with each other, useful for problems that genuinely benefit from more than one perspective checking the work, at the cost of more tokens and more moving parts.",
+          "Semantic Kernel: Microsoft's enterprise-oriented option, built around a plugin model and aimed squarely at teams already standardized on .NET or Azure, with the governance and observability features larger organizations tend to ask for.",
+          "Google's Agent Development Kit (ADK): Google's own framework for building and orchestrating hierarchies of agents, with first-party ties into Gemini and Google Cloud's agent-hosting infrastructure.",
+          "OpenAI's Agents SDK: a deliberately lighter-weight option built around a small set of primitives, agents, handoffs, guardrails, aimed at teams who want orchestration without adopting a large, heavily opinionated framework.",
+        ],
+      },
+      {
+        type: "p",
+        text: "None of these are strictly better than the others in the abstract. They're optimized for different shapes of problem, deep retrieval over your own data, a fixed conversation between specialist agents, a graph of branching decisions, and picking one is really picking which shape of problem you expect to have most often.",
+      },
+      { type: "h2", text: "Where a toolkit like the Vercel AI SDK fits instead" },
+      {
+        type: "p",
+        text: "This is the point where the framework list above and something like the Vercel AI SDK stop being comparable in the way they're usually compared. The AI SDK isn't a smaller, leaner competitor to LangChain or CrewAI, it's solving a different problem one layer down. Where a framework hands you an opinionated structure for orchestration, memory, and multi-agent coordination, a toolkit hands you clean, well-typed primitives for the part every one of those frameworks also has to do somewhere underneath: calling a model, streaming its output, getting structured data back, and letting the model call your functions. What you do with those primitives is entirely up to you.",
+      },
+      {
+        type: "p",
+        text: "Concretely, the AI SDK gives you a single interface across model providers so switching from one to another is a config change rather than a rewrite, a streaming layer that works cleanly with React and Next.js so tokens appear in the UI as they're generated, structured-output helpers that validate a model's response against a schema instead of hoping it returns valid JSON, and a tool-calling loop you can build an agent out of directly, without a framework's memory system, agent hierarchy, or graph engine sitting on top of it. It's the layer you'd reach for to build exactly the orchestration a framework would otherwise supply, sized to what your product actually needs instead of what a general-purpose framework assumes every product needs.",
+      },
+      {
+        type: "p",
+        text: "The practical difference shows up the first time something goes wrong. Debug a LangChain agent and you're often stepping through the framework's own abstractions to find out why a chain didn't call the tool you expected. Debug an agent built directly on the AI SDK's primitives and you're stepping through code you wrote yourself, because there's no framework-level orchestration layer standing between you and the model call. That's not automatically better, more code you own is also more code you maintain, but it's a real, predictable trade rather than a lesser version of the same thing.",
+      },
+      { type: "h2", text: "So which one do you actually need?" },
+      {
+        type: "p",
+        text: "The honest answer is that most products described as needing \"an AI framework\" don't, at least not at first. A chat interface, a content generator, a support assistant that calls two or three tools, a structured-data extractor, all of that is well within what a toolkit alone handles cleanly, and building it directly means fewer dependencies, a smaller surface to secure and patch, and a codebase where the people maintaining it can actually see every decision the agent is allowed to make.",
+      },
+      {
+        type: "p",
+        text: "A framework starts earning its overhead when the coordination problem itself gets genuinely complex: several distinct agents that need to hand off work to each other, a retrieval pipeline over a large and changing body of documents, or a workflow with enough branching and looping that hand-rolling a state machine would mean rebuilding, badly, something a graph-based framework already does well. At that point the framework's opinions stop being a constraint and start being time you don't have to spend.",
+      },
+      { type: "h2", text: "The question worth asking before either one goes near production" },
+      {
+        type: "p",
+        text: "Whichever layer you pick, it's worth remembering that neither one is the whole system. We've written before about the formula we build against: AI Agent = LLM + Harness, meaning the model is only ever half the product, and everything around it, error handling, permissions, retries, logging, is what actually decides whether an agent is safe to leave running unattended. A framework can supply some of that harness for you. A toolkit expects you to build more of it yourself. Neither one supplies it automatically just by being installed, and a vendor pitching either as a finished answer, rather than a set of primitives you still have to wire up correctly, is worth a second, more skeptical question.",
+      },
+      {
+        type: "quote",
+        text: "A framework is a set of opinions about how your agent should be built. A toolkit is the raw material to build it your own way. Neither one is a substitute for actually deciding what your agent is allowed to do.",
+      },
+    ],
+  },
 ];
 
 export function getBlogPost(slug: string): BlogPost | undefined {

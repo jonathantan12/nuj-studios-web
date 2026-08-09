@@ -81,7 +81,7 @@ export function buildLlmsTxt(): string {
 }
 
 function formatSgPhone(number: string): string {
-  // "6596552844" -> "9655 2844" (strip leading 65 country code, space the rest)
+  // "6589791210" -> "8979 1210" (strip leading 65 country code, space the rest)
   const local = number.startsWith("65") ? number.slice(2) : number;
   return `${local.slice(0, 4)} ${local.slice(4)}`;
 }

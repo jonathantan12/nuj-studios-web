@@ -50,7 +50,7 @@ export default function ContactPage() {
             <h3>WhatsApp</h3>
             <p>
               <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer">
-                +65 9655 2844
+                +65 8979 1210
               </a>
             </p>
             <p>Message Vivian directly for a quick reply, no need to wait for email.</p>
