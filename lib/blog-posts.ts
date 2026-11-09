@@ -1,27 +1,53 @@
+import { CROSS_SITE_POSTS } from "./blog-posts-cross-site";
+
+/** Inline pieces of a paragraph or list item. Plain strings still work everywhere. */
+export type InlineNode =
+  | { type: "text"; text: string }
+  | { type: "strong"; text: string }
+  | { type: "link"; text: string; href: string };
+
+/** Either a plain string (existing posts) or a list of inline pieces (links, bold). */
+export type RichText = string | InlineNode[];
+
 export type BlogBlock =
-  | { type: "p"; text: string }
+  | { type: "p"; text: RichText }
   | { type: "h2"; text: string }
   | { type: "h3"; text: string }
-  | { type: "ul"; items: string[] }
-  | { type: "ol"; items: string[] }
+  | { type: "ul"; items: RichText[] }
+  | { type: "ol"; items: RichText[] }
   | { type: "quote"; text: string; source?: string }
-  | { type: "link"; text: string; href: string };
+  | { type: "link"; text: string; href: string }
+  | { type: "table"; headers: RichText[]; rows: RichText[][] }
+  | { type: "faq"; items: { question: string; answer: RichText }[] };
 
 export type BlogPost = {
   slug: string;
   title: string;
   /** Shorter title for the <title> tag, kept under ~60 chars. Falls back to `title`. */
   metaTitle?: string;
+  /**
+   * Full <title> used as-is (skips the site's " | nuj studios" suffix). Use when the SEO
+   * title already contains the brand. Takes priority over `metaTitle`.
+   */
+  seoTitle?: string;
   description: string;
   date: string;
+  /** Last-updated date (YYYY-MM-DD). When set, the page shows a byline with author and this date. */
+  updated?: string;
   readTime: string;
   category: string;
   tags: string[];
   author: string;
+  /**
+   * Draft posts are visible only when NODE_ENV !== "production" (i.e. `next dev`).
+   * In production they are hidden from the index, sitemap, feeds, related lists and routes (404).
+   * Remove the flag (or set it to false) to publish.
+   */
+  draft?: boolean;
   content: BlogBlock[];
 };
 
-export const BLOG_POSTS: BlogPost[] = [
+const EXISTING_POSTS: BlogPost[] = [
   {
     slug: "signs-your-sme-website-is-costing-you-customers",
     title: "5 Signs Your SME Website Is Costing You Customers",
@@ -2811,14 +2837,26 @@ export const BLOG_POSTS: BlogPost[] = [
   },
 ];
 
+/** Every post, drafts included. Prefer the visibility-aware helpers below. */
+export const BLOG_POSTS: BlogPost[] = [...EXISTING_POSTS, ...CROSS_SITE_POSTS];
+
+/** Drafts show only outside production. */
+export function isPostVisible(post: BlogPost): boolean {
+  return !post.draft || process.env.NODE_ENV !== "production";
+}
+
+export function getVisibleBlogPosts(): BlogPost[] {
+  return BLOG_POSTS.filter(isPostVisible);
+}
+
 export function getBlogPost(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find((post) => post.slug === slug);
+  return getVisibleBlogPosts().find((post) => post.slug === slug);
 }
 
 export function getAllBlogSlugs(): string[] {
-  return BLOG_POSTS.map((post) => post.slug);
+  return getVisibleBlogPosts().map((post) => post.slug);
 }
 
 export function getSortedBlogPosts(): BlogPost[] {
-  return [...BLOG_POSTS].sort((a, b) => (a.date < b.date ? 1 : -1));
+  return [...getVisibleBlogPosts()].sort((a, b) => (a.date < b.date ? 1 : -1));
 }

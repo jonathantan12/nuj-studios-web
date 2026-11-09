@@ -1,4 +1,5 @@
-import type { BlogBlock, BlogPost } from "./blog-posts";
+import type { BlogBlock, BlogPost, RichText } from "./blog-posts";
+import { richTextToMarkdown } from "./blog-rich-text";
 import { SITE_URL } from "./site-config";
 
 /** `headingLevel` is the markdown level for the post title; body h2/h3 blocks nest one and two below it. */
@@ -8,19 +9,32 @@ export function blockToMarkdown(block: BlogBlock, headingLevel: number): string 
 
   switch (block.type) {
     case "p":
-      return block.text;
+      return richTextToMarkdown(block.text);
     case "h2":
       return `${h2} ${block.text}`;
     case "h3":
       return `${h3} ${block.text}`;
     case "ul":
-      return block.items.map((item) => `- ${item}`).join("\n");
+      return block.items.map((item) => `- ${richTextToMarkdown(item)}`).join("\n");
     case "ol":
-      return block.items.map((item, i) => `${i + 1}. ${item}`).join("\n");
+      return block.items.map((item, i) => `${i + 1}. ${richTextToMarkdown(item)}`).join("\n");
     case "quote":
       return `> ${block.text}${block.source ? `\n>\n> — ${block.source}` : ""}`;
     case "link":
       return `[${block.text}](${block.href})`;
+    case "table": {
+      const row = (cells: RichText[]) =>
+        `| ${cells.map((c) => richTextToMarkdown(c)).join(" | ")} |`;
+      return [
+        row(block.headers),
+        `| ${block.headers.map(() => "---").join(" | ")} |`,
+        ...block.rows.map(row),
+      ].join("\n");
+    }
+    case "faq":
+      return block.items
+        .map((item) => `${h3} ${item.question}\n\n${richTextToMarkdown(item.answer)}`)
+        .join("\n\n");
     default:
       return "";
   }

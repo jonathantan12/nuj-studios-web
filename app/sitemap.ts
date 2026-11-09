@@ -1,6 +1,6 @@
 import type { MetadataRoute } from "next";
 import { SITE_URL } from "@/lib/site-config";
-import { BLOG_POSTS } from "@/lib/blog-posts";
+import { getVisibleBlogPosts } from "@/lib/blog-posts";
 import { getAllServiceSlugs } from "@/lib/services";
 import { getAllCaseStudySlugs } from "@/lib/case-studies";
 
@@ -34,7 +34,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.6,
   }));
 
-  const blogRoutes: MetadataRoute.Sitemap = BLOG_POSTS.map((post) => ({
+  const blogRoutes: MetadataRoute.Sitemap = getVisibleBlogPosts().map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.date),
     changeFrequency: "monthly",

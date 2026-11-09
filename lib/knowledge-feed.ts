@@ -1,6 +1,6 @@
 import { SERVICES } from "./services";
 import { CASE_STUDIES } from "./case-studies";
-import { BLOG_POSTS, getSortedBlogPosts } from "./blog-posts";
+import { getVisibleBlogPosts, getSortedBlogPosts } from "./blog-posts";
 import { SITE_FAQS } from "./faqs";
 import { CLIENT_INDUSTRIES } from "./clients";
 import { HOW_WE_OPERATE, WHY_HIRE_US } from "./company";
@@ -254,7 +254,7 @@ export function buildLlmsFullTxt(): string {
   for (const study of CASE_STUDIES) {
     pageLines.push(`- ${SITE_URL}/case-studies/${study.slug}`);
   }
-  for (const post of BLOG_POSTS) {
+  for (const post of getVisibleBlogPosts()) {
     pageLines.push(`- ${SITE_URL}/blog/${post.slug}`);
   }
   sections.push(pageLines.join("\n"));

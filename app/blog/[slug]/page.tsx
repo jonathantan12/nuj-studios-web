@@ -5,6 +5,7 @@ import ArticleBody from "../../_components/ArticleBody";
 import CopyMarkdownButton from "../../_components/CopyMarkdownButton";
 import { getAllBlogSlugs, getBlogPost } from "@/lib/blog-posts";
 import { blogPostToMarkdown } from "@/lib/blog-markdown";
+import { richTextToPlain } from "@/lib/blog-rich-text";
 import { SITE_URL } from "@/lib/site-config";
 
 export function generateStaticParams() {
@@ -20,10 +21,11 @@ export async function generateMetadata({
   const post = getBlogPost(slug);
   if (!post) return {};
 
-  const title = post.metaTitle ?? post.title;
+  const title = post.seoTitle ?? post.metaTitle ?? post.title;
 
   return {
-    title,
+    // seoTitle is a complete <title> (already contains the brand), so skip the layout's suffix template.
+    title: post.seoTitle ? { absolute: post.seoTitle } : title,
     description: post.description,
     alternates: { canonical: `/blog/${post.slug}` },
     openGraph: {
@@ -32,6 +34,7 @@ export async function generateMetadata({
       url: `/blog/${post.slug}`,
       type: "article",
       publishedTime: post.date,
+      ...(post.updated ? { modifiedTime: post.updated } : {}),
       authors: [post.author],
     },
     twitter: {
@@ -57,10 +60,29 @@ export default async function BlogPostPage({
     headline: post.title,
     description: post.description,
     datePublished: post.date,
+    ...(post.updated ? { dateModified: post.updated } : {}),
     author: { "@type": "Organization", name: post.author },
     publisher: { "@type": "Organization", name: "nuj studios" },
     mainEntityOfPage: `${SITE_URL}/blog/${post.slug}`,
   };
+
+  // FAQPage JSON-LD is built from the same faq blocks that are rendered, so they always match.
+  const faqItems = post.content.flatMap((block) => (block.type === "faq" ? block.items : []));
+  const faqJsonLd =
+    faqItems.length > 0
+      ? {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map((item) => ({
+            "@type": "Question",
+            name: item.question,
+            acceptedAnswer: { "@type": "Answer", text: richTextToPlain(item.answer) },
+          })),
+        }
+      : null;
+
+  const formatDate = (iso: string) =>
+    new Date(iso).toLocaleDateString("en-SG", { year: "numeric", month: "long", day: "numeric" });
 
   const formattedDate = new Date(post.date).toLocaleDateString("en-SG", {
     year: "numeric",
@@ -88,7 +110,13 @@ export default async function BlogPostPage({
             <h1>{post.title}</h1>
             <p className="page-hero-intro">{post.description}</p>
             <p className="page-hero-meta mono">
-              {formattedDate} · {post.readTime}
+              {post.updated ? (
+                `By ${post.author} · Updated ${formatDate(post.updated)} · ${post.readTime}`
+              ) : (
+                <>
+                  {formattedDate} · {post.readTime}
+                </>
+              )}
             </p>
             <CopyMarkdownButton markdown={blogPostToMarkdown(post)} />
           </div>
@@ -103,6 +131,14 @@ export default async function BlogPostPage({
           __html: JSON.stringify(jsonLd).replace(/</g, "\\u003c"),
         }}
       />
+      {faqJsonLd && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(faqJsonLd).replace(/</g, "\\u003c"),
+          }}
+        />
+      )}
     </main>
   );
 }
